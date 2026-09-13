@@ -6,7 +6,7 @@ import android.util.Log // Import Log for debugging
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.utils.*
-// No need to import AppUtils specifically if using AppUtils.parseJson
+// No need to import AppUtils specifically if using parseJson
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 
@@ -129,7 +129,7 @@ class XhamsterProvider: MainAPI() {
         return try {
             val script = Jsoup.parse(html).selectFirst("script#initials-script")?.html() ?: return null
             val jsonString = script.removePrefix("window.initials=").removeSuffix(";")
-            AppUtils.parseJson<InitialsJson>(jsonString) // Use AppUtils.parseJson
+            parseJson<InitialsJson>(jsonString) // Use parseJson
         } catch (e: Exception) {
             Log.e(name, "getInitialsJson failed: ${e.message}")
             e.printStackTrace()

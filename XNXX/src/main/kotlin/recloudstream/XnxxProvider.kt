@@ -117,7 +117,7 @@ class XnxxProvider : MainAPI() {
                     val arrayString = matchResult.groupValues[1].trim() 
                     if (arrayString.startsWith("[") && arrayString.endsWith("]")) {
                         try {
-                            val allHomePageItems = AppUtils.parseJson<List<HomePageItem>>(arrayString)
+                            val allHomePageItems = parseJson<List<HomePageItem>>(arrayString)
                             val validSectionsSource = allHomePageItems.mapNotNull { item ->
                                 var currentItemTitle = item.title ?: item.titleFallback 
                                 val itemUrlPart = item.url
@@ -277,7 +277,7 @@ class XnxxProvider : MainAPI() {
                 val jsonArrayStringRelated = matchRelated.groupValues[1]
                 try {
                     // Sử dụng RelatedItemParse đã định nghĩa ở top-level
-                    val relatedItems = AppUtils.parseJson<List<RelatedItemParse>>(jsonArrayStringRelated)
+                    val relatedItems = parseJson<List<RelatedItemParse>>(jsonArrayStringRelated)
                     relatedItems.forEach { related ->
                         val rawRelatedTitle = related.tf // Sử dụng thuộc tính của RelatedItemParse
                         val relatedTitle = rawRelatedTitle?.let { Parser.unescapeEntities(it, false)}

@@ -181,7 +181,7 @@ class WebteIzle : MainAPI() {
                     "bot" to "0"
                 )
             ).text
-            val playerData = AppUtils.tryParseJson<DataAlternatif>(playerApi) ?: return@forEach
+            val playerData = tryParseJson<DataAlternatif>(playerApi) ?: return@forEach
 
             for (thisEmbed in playerData.data) {
                 val embedApi = app.post(

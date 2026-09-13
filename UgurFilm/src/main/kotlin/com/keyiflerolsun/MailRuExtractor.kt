@@ -20,7 +20,7 @@ open class MailRu : ExtractorApi() {
         val videoKey  = videoReq.cookies["video_key"].toString()
         Log.d("Kekik_${this.name}", "videoKey » $videoKey")
 
-        val videoData = AppUtils.tryParseJson<MailRuData>(videoReq.text) ?: throw ErrorLoadingException("Video not found")
+        val videoData = tryParseJson<MailRuData>(videoReq.text) ?: throw ErrorLoadingException("Video not found")
 
         for (video in videoData.videos) {
             Log.d("Kekik_${this.name}", "video » $video")

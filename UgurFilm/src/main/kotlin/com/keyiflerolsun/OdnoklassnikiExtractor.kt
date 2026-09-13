@@ -22,7 +22,7 @@ open class Odnoklassniki : ExtractorApi() {
                 Integer.parseInt(matchResult.groupValues[1], 16).toChar().toString()
             }
         val videosStr = Regex(""""videos":(\[[^]]*])""").find(videoReq)?.groupValues?.get(1) ?: throw ErrorLoadingException("Video not found")
-        val videos     = AppUtils.tryParseJson<List<OkRuVideo>>(videosStr) ?: throw ErrorLoadingException("Video not found")
+        val videos     = tryParseJson<List<OkRuVideo>>(videosStr) ?: throw ErrorLoadingException("Video not found")
 
         for (video in videos) {
             Log.d("Kekik_${this.name}", "video » $video")

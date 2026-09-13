@@ -233,7 +233,7 @@ class HDFilmCehennemi : MainAPI() {
         val lastUrl = dcHello(base64Input).substringAfter("https").let { "https$it" }
         val subData   = script.substringAfter("tracks: [").substringBefore("]")
 		Log.d("HDCH", "subData » $subData")
-        AppUtils.tryParseJson<List<SubSource>>("[${subData}]")?.filter { it.kind == "captions"}?.map {
+        tryParseJson<List<SubSource>>("[${subData}]")?.filter { it.kind == "captions"}?.map {
             val subtitleUrl = "${mainUrl}${it.file}/"
 
 	    val headers = mapOf(

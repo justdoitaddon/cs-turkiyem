@@ -116,7 +116,7 @@ class RecTV : MainAPI() {
             "authorization" to "Bearer $validToken"
         ))
 
-        val movies = AppUtils.tryParseJson<List<RecItem>>(home.text)!!.map { item ->
+        val movies = tryParseJson<List<RecItem>>(home.text)!!.map { item ->
             val toDict = jacksonObjectMapper().writeValueAsString(item)
 
             if (item.label != "CANLI" && item.label != "Canlı") {
@@ -136,7 +136,7 @@ class RecTV : MainAPI() {
             "${mainUrl}/api/search/${query}/${swKey}/",
             headers = mapOf("user-agent" to "okhttp/4.12.0") 
         )
-        val veriler = AppUtils.tryParseJson<RecSearch>(home.text)
+        val veriler = tryParseJson<RecSearch>(home.text)
 
         val sonuclar = mutableListOf<SearchResponse>()
 
@@ -162,7 +162,7 @@ class RecTV : MainAPI() {
     override suspend fun quickSearch(query: String): List<SearchResponse> = search(query)
 
     override suspend fun load(url: String): LoadResponse? {
-        val veri = AppUtils.tryParseJson<RecItem>(url) ?: return null
+        val veri = tryParseJson<RecItem>(url) ?: return null
 
         if (veri.type == "serie") {
             val diziReq  = app.get(
@@ -170,7 +170,7 @@ class RecTV : MainAPI() {
                 // load fonksiyonunda da Bearer token gerekiyorsa buraya eklenmelidir.
                 headers = mapOf("user-agent" to "okhttp/4.12.0")
             )
-            val sezonlar = AppUtils.tryParseJson<List<RecDizi>>(diziReq.text) ?: return null
+            val sezonlar = tryParseJson<List<RecDizi>>(diziReq.text) ?: return null
 
             val episodes = mutableMapOf<DubStatus,MutableList<Episode>>()
 
@@ -231,7 +231,7 @@ class RecTV : MainAPI() {
             return true
         }
 
-        val veri = AppUtils.tryParseJson<RecItem>(data) ?: return false
+        val veri = tryParseJson<RecItem>(data) ?: return false
 
         for (source in veri.sources) {
             Log.d("RCTV", "source » $source")

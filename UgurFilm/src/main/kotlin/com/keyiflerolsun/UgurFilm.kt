@@ -108,7 +108,7 @@ class UgurFilm : MainAPI() {
                             "ord"         to order
                         )
                     ).text
-                    val playerData = AppUtils.tryParseJson<AjaxSource>(playerApi) ?: continue
+                    val playerData = tryParseJson<AjaxSource>(playerApi) ?: continue
                     Log.d("UGF", "playerData » $playerData")
 
                     if (playerData.iframe in yuklenenler) continue
