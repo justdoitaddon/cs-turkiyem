@@ -1,6 +1,7 @@
 package recloudstream
 
-import android.content.Context
+
+
 import com.lagradost.cloudstream3.plugins.CloudstreamPlugin
 import com.lagradost.cloudstream3.plugins.Plugin
 // Import này có thể cần thiết nếu registerMainAPI là extension function
@@ -8,7 +9,7 @@ import com.lagradost.cloudstream3.plugins.Plugin
 
 @CloudstreamPlugin // Đánh dấu đây là plugin
 class XnxxPlugin: Plugin() { // Kế thừa Plugin
-    override fun load(context: Context) {
+    override fun load() {
         // Tất cả provider nên được thêm vào theo cách này.
         // Đăng ký AnimeHayProvider
         registerMainAPI(XnxxProvider()) // Gọi đăng ký provider ở đây
