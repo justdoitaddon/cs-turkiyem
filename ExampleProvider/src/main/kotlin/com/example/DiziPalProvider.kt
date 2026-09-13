@@ -75,8 +75,12 @@ class DiziPalProvider : MainAPI() {
         // Find all iframes that might contain the video player
         val iframes = document.select("iframe")
         for (iframe in iframes) {
-            val src = iframe.attr("data-src").takeIf { it.isNotEmpty() } ?: iframe.attr("src")
+            var src = iframe.attr("data-src").takeIf { it.isNotEmpty() } ?: iframe.attr("src")
             if (src.isNotEmpty() && src.startsWith("http")) {
+                // Vidmoly domain aliases - replace with known Vidmoly domain so Cloudstream core extractor picks it up
+                if (src.contains("formationfeed.net")) {
+                    src = src.replace("formationfeed.net", "vidmoly.to")
+                }
                 loadExtractor(src, data, subtitleCallback, callback)
             }
         }
