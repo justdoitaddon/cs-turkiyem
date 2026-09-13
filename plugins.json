@@ -1,0 +1,889 @@
+[
+    {
+        "iconUrl": "https://anm.cx/favicon.ico",
+        "fileHash": "sha256-ee5c667ecc51b6354649f02a55933e9e65b294e3b53fe90b6f376a39d68c2ee5",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 24656,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun",
+            "inatchii",
+            "JustRelaxable"
+        ],
+        "tvTypes": [
+            "Anime"
+        ],
+        "version": 21,
+        "internalName": "AnimeciX",
+        "description": "AnimeciX, animeleri ke\u015ffedebilece\u011finiz ve animeler hakk\u0131nda her \u015feyi \u00f6\u011frenebilece\u011finiz bir payla\u015f\u0131m platformudur.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/AnimeciX.cs3",
+        "name": "AnimeciX"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=belgeselx.com&sz=%size%",
+        "fileHash": "sha256-e3d305bc3bf19c88f91774446b2c9e47af11cf82665cf000b55640963ffe3bd2",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 20163,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun",
+            "JustRelaxable"
+        ],
+        "tvTypes": [
+            "Documentary"
+        ],
+        "version": 12,
+        "internalName": "BelgeselX",
+        "description": "En yeni belgeseller, t\u00fcrk\u00e7e altyaz\u0131l\u0131 yada dublaj olarak 1080p kalitesinde HD belgesel izle.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/BelgeselX.cs3",
+        "name": "BelgeselX"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=tr.canlitv.team&sz=%size%",
+        "fileHash": "sha256-711706f764f9041465f1249377442da4cfcd81eb58d9672bcdeab84f5359fefb",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 19345,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "Adippe",
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Live"
+        ],
+        "version": 10,
+        "internalName": "CanliTV",
+        "description": "Canl\u0131 TV",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/CanliTV.cs3",
+        "name": "CanliTV"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=cizgimax.online&sz=%size%",
+        "fileHash": "sha256-2dc59e43e818a19fd38781bb08789939d4f64b40a41057c86e797f2d409b19bd",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 21010,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Cartoon"
+        ],
+        "version": 8,
+        "internalName": "CizgiMax",
+        "description": "\u00c7izgiMax ile \u00c7izgi Film izlemek art\u0131k daha kolay, donmadan full hd ve reklams\u0131z bir sitedir, i\u00e7erisinde 700 den fazla \u00e7izgi film olan, Bu site bu i\u015fi profesyonelce yap\u0131yor.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/CizgiMax.cs3",
+        "name": "CizgiMax"
+    },
+    {
+        "iconUrl": "https://www.ddizi.im/favicon.ico",
+        "fileHash": "sha256-116f461831a8d9c31d913f96619e118a50acbbc4cedc578975d66111a3b1ea3e",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 18911,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "TvSeries"
+        ],
+        "version": 10,
+        "internalName": "Ddizi",
+        "description": "DDizi.im i\u00e7in Cloudstream eklentisi",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/Ddizi.cs3",
+        "name": "Ddizi"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.dizibox.live&sz=%size%",
+        "fileHash": "sha256-3df0b5f6e3044b792ff51c69cc57c9f4ff0e8d37193171e3cd9618b5709b6d27",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 21278,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "TvSeries"
+        ],
+        "version": 23,
+        "internalName": "DiziBox",
+        "description": "Yabanc\u0131 Dizi izle, T\u00fcm yabanc\u0131 dizilerin yeni ve eski sezonlar\u0131n\u0131 full hd izleyebilece\u011finiz elit site.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/DiziBox.cs3",
+        "name": "DiziBox"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=https://dizikorea.vip&sz=%size%",
+        "fileHash": "sha256-1a2d11b74c9479570a99d879d4e23289f74f1df7365eb438d37dd05950490610",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 22749,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "AsianDrama"
+        ],
+        "version": 29,
+        "internalName": "DiziKorea",
+        "description": "En G\u00fcncel Kore Dizileri izleme Sitesi",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/DiziKorea.cs3",
+        "name": "DiziKorea"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=dizilla.club&sz=%size%",
+        "fileHash": "sha256-43442c0da3c2da917d25b094db5e385b77501f49ac035623ee74cf567f36a75f",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 26855,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "TvSeries"
+        ],
+        "version": 39,
+        "internalName": "Dizilla",
+        "description": "Dizilla t\u00fcm yabanc\u0131 dizileri \u00fccretsiz olarak T\u00fcrk\u00e7e Dublaj ve altyaz\u0131l\u0131 se\u00e7enekleri ile 1080P kalite izleyebilece\u011finiz yeni nesil yabanc\u0131 dizi izleme siteniz.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/Dizilla.cs3",
+        "name": "Dizilla"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.dizimom.plus&sz=%size%",
+        "fileHash": "sha256-02b834e0a18e80fb1ab707b2ff4c794962c8dbfbd943f85bff15022fc1490ba1",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 30946,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "TvSeries"
+        ],
+        "version": 35,
+        "internalName": "DiziMom",
+        "description": "Binlerce yerli yabanc\u0131 dizi ar\u015fivi, t\u00fcm sezonlar, kesintisiz b\u00f6l\u00fcmler. Sadece dizi izle, Dizimom heryerde seninle!",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/DiziMom.cs3",
+        "name": "DiziMom"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=https://dizipal952.com&sz=%size%",
+        "fileHash": "sha256-7d73eadccd0dd13d0f511f2eae34dd257d26ccaeb466c22f5c696dafbadfc1bf",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 19340,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun",
+            "muratcesmecioglu"
+        ],
+        "tvTypes": [
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 32,
+        "internalName": "DiziPal",
+        "description": "en yeni dizileri g\u00fcvenli ve h\u0131zl\u0131 \u015fekilde sunar.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/DiziPal.cs3",
+        "name": "DiziPal"
+    },
+    {
+        "iconUrl": "https://cdn.diziyou6.com/wp-content/uploads/2020/04/diziyou-favicon.png",
+        "fileHash": "sha256-297014d51b8a5e7ab656daab5396d4bfba177311f4547aa7d113df09c4d8f90b",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 15685,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "TvSeries"
+        ],
+        "version": 23,
+        "internalName": "DiziYou",
+        "description": "Diziyou en kaliteli T\u00fcrk\u00e7e dublaj ve altyaz\u0131l\u0131 yabanc\u0131 dizi izleme sitesidir. G\u00fcncel ve efsanevi dizileri 1080p Full HD kalitede izlemek i\u00e7in hemen t\u0131kla!",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/DiziYou.cs3",
+        "name": "DiziYou"
+    },
+    {
+        "iconUrl": "https://filmbip.com/uploads/favicon/original/favicon.webp",
+        "fileHash": "sha256-9e3dfc25108f1108b237e51a5010553dbf19c8cc203a794bc2665f496a536688",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 14793,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 11,
+        "internalName": "FilmBip",
+        "description": "Binlerce yerli yabanc\u0131 dizi ar\u015fivi, t\u00fcm sezonlar, kesintisiz b\u00f6l\u00fcmler. Filmbip heryerde seninle!",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/FilmBip.cs3",
+        "name": "FilmBip"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=filmmakinesi.film&sz=%size%",
+        "fileHash": "sha256-aca249e2be440c6aa7e6fa2536645de9e7a94f15f7e0b6247f0a8165d3408f99",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 15802,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun",
+            "usdogu"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 40,
+        "internalName": "FilmMakinesi",
+        "description": "Film Makinesi, en yeni ve en g\u00fcncel filmleri sitemizde full HD kalite fark\u0131 ile izleyebilirsiniz. HD film izle denildi\u011finde akla gelen en kaliteli film izleme sitesi.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/FilmMakinesi.cs3",
+        "name": "FilmMakinesi"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.filmmodu17.com&sz=%size%",
+        "fileHash": "sha256-93b6176d1c3a0a0fb32ed56e93f006e8f362dad89c4897dd8966e49d180a5320",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 14601,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 15,
+        "internalName": "FilmModu",
+        "description": "Film modun geldiyse y\u00fcksek kalitede en yeni filmleri izle, 1080p izleyebilece\u011finiz reklamsiz film sitesi.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/FilmModu.cs3",
+        "name": "FilmModu"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=fullhdfilm.us&sz=%size%",
+        "fileHash": "sha256-56e764b6a1ca8bb86a743b15b2735533bbef14a9df657fdafaf00345643e26e4",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 18023,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie",
+            "TvSeries"
+        ],
+        "version": 35,
+        "internalName": "FullHDFilm",
+        "description": "Fullhdfilm ile en yeni vizyon filmler Full HD ve kesintisiz film sizlerle. \u00d6zg\u00fcn film ar\u015fivimizle en \u00fcst\u00fcn kaliteli film izle keyfini sunuyoruz.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/FullHDFilm.cs3",
+        "name": "FullHDFilm"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.fullhdfilmizlesene.de&sz=%size%",
+        "fileHash": "sha256-70d0d9893d48f5a3e2b728b1142e6f402a12781d760fce1c7d8270a6ae9a2b06",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 34158,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 27,
+        "internalName": "FullHDFilmizlesene",
+        "description": "Sinema zevkini evinize kadar getirdik. T\u00fcrkiye'nin lider Film sitesinde, en yeni filmleri Full HD izleyin.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/FullHDFilmizlesene.cs3",
+        "name": "FullHDFilmizlesene"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=fullporner.com&sz=%size%",
+        "fileHash": "sha256-647d8af3fcbac32f36e893040417a87fefcb59a50ff4bcac7486c947516c601b",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 12398,
+        "status": 1,
+        "language": "en",
+        "authors": [
+            "Coxju, megix"
+        ],
+        "tvTypes": [
+            "NSFW"
+        ],
+        "version": 2,
+        "internalName": "FullPorner",
+        "description": "FullPorner is the best free full length porn video site. Choose from millions of hardcore videos that stream quickly and in high quality and only full length",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/FullPorner.cs3",
+        "name": "FullPorner"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=hdabla.net&sz=%size%",
+        "fileHash": "sha256-fb6aa4f74bc8a32059f1675a627505ee8c3405cf52f571103cc8ac939ef5df57",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 13669,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "kerimmkirac"
+        ],
+        "tvTypes": [
+            "NSFW"
+        ],
+        "version": 2,
+        "internalName": "HdAbla",
+        "description": "Porno film izlemek i\u00e7in HdAbla sitesini ziyaret edin. Keyifle mobil siki\u015f seyret. Sex ve rokettube seks videolar\u0131n\u0131 g\u00fcncel olarak Full HD kalitede bedava adult porn sunuyoruz",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/HdAbla.cs3",
+        "name": "HdAbla"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=hdfilmcehennemi.com&sz=%size%",
+        "fileHash": "sha256-7ab1ea69e7714c60d9236e521e608e0053a7633a5690ac9bc26bf99e25e11050",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 25920,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "hexated",
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie",
+            "TvSeries"
+        ],
+        "version": 23,
+        "internalName": "HDFilmCehennemi",
+        "description": "T\u00fcrkiye'nin en h\u0131zl\u0131 hd film izleme sitesi",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/HDFilmCehennemi.cs3",
+        "name": "HDFilmCehennemi"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=hqporner.com&sz=%size%",
+        "fileHash": "sha256-f9c1608764589a0496bd24d36dd0ff964094c8241a5c8b359a01bb0929f330e7",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 15350,
+        "status": 1,
+        "language": "en",
+        "authors": [
+            "Phishe"
+        ],
+        "tvTypes": [
+            "NSFW"
+        ],
+        "version": 4,
+        "internalName": "Hqporner",
+        "description": "(VPN) Premium Porn with 4K support",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/Hqporner.cs3",
+        "name": "Hqporner"
+    },
+    {
+        "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ifsalog4.club/&size=128",
+        "fileHash": "sha256-f0100b5e18201c7f2ab35fc39eb0581568afc852e5f20342fd4219726893eb04",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 11728,
+        "status": 0,
+        "language": "tr",
+        "authors": [
+            "kraptor"
+        ],
+        "tvTypes": [
+            "NSFW"
+        ],
+        "version": 3,
+        "internalName": "IfsaLog",
+        "description": "\u0130fsalog Saklanan ne varsa burada if\u015fa olur ! - T\u00fcrkiye\u2019nin en g\u00fcncel if\u015fa i\u00e7eriklerini HD kalitede ke\u015ffedin \u2013 s\u0131zd\u0131r\u0131lm\u0131\u015f videolar, \u00f6zel \u00e7ekimler ve sosyal medya medyas\u0131yla ger\u00e7ek if\u015falar \u015fimdi burada!",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/IfsaLog.cs3",
+        "name": "IfsaLog"
+    },
+    {
+        "iconUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3vCp6N1K4bECoYRQD-cisJF2_6V_Hk01ZhDmoPR2JuM8O5qr4MqrPO1munM9cRlleBBSK6odYhLtDBWv4E3vhPhynlmS5hVVtJZShHoGA5REQ8_3v8SIlccTEqzVQu2UJyNYQdJNrKIfWy66RQeT0D-CcmFCbHPz5023H6p2v5fv4NVloZ5Rqo_yGrIY/s320/iNat-Box-App.png",
+        "fileHash": "sha256-277250a5450b0ba708332d398e1e349b5456e81827a8d89743550b6e28ec9039",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 31458,
+        "status": 3,
+        "language": "tr",
+        "authors": [
+            "JustRelaxable",
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie",
+            "TvSeries",
+            "Live"
+        ],
+        "version": 24,
+        "internalName": "InatBox",
+        "description": "\u0130natBox cloudstream eklentisidir. Sevdi\u011finiz yay\u0131n platformlar\u0131n\u0131 ve canl\u0131 ma\u00e7lar\u0131 burada bulabilirsiniz.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/InatBox.cs3",
+        "name": "InatBox"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=https://jetfilmizle.de&sz=%size%",
+        "fileHash": "sha256-4c948c07574a4c2d9e0925581a643a841183245248502b7429d7583cdaaae6d0",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 16358,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 41,
+        "internalName": "JetFilmizle",
+        "description": "Binlerce Film \u0130zleme Se\u00e7ene\u011fiyle En \u0130yi Film \u0130zleme Sitesi",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/JetFilmizle.cs3",
+        "name": "JetFilmizle"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.kalite18.net&sz=%size%",
+        "fileHash": "sha256-11a147c72e5c77d18a209416525a042a27135b2df0b6a2b02e556f33d82d564c",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 12743,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "kerimmkirac"
+        ],
+        "tvTypes": [
+            "NSFW"
+        ],
+        "version": 2,
+        "internalName": "Kalite18",
+        "description": "Kalite18, sizlere porno filmleri HD kalite ve t\u00fcrk\u00e7e altyaz\u0131l\u0131 olarak izleme keyfi sunmaktad\u0131r. Porno ve sex filmlerini anlayarak 31 \u00e7ekmenin keyfini \u00e7\u0131kar\u0131n.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/Kalite18.cs3",
+        "name": "Kalite18"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=koreanturk.com&sz=%size%",
+        "fileHash": "sha256-8c1ae253b101d427ffb27cc095b790acfdb68140ea673c7378089c9527a405ce",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 12191,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "AsianDrama"
+        ],
+        "version": 7,
+        "internalName": "KoreanTurk",
+        "description": "G\u00fcney Kore sevdal\u0131lar\u0131n\u0131n vazge\u00e7emedi\u011fi ve T\u00fcrkiye'nin en \u00e7ok ziyaret edilen G\u00fcney Kore Portal\u0131; Koreant\u00fcrk'e ho\u015fgeldiniz!",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/KoreanTurk.cs3",
+        "name": "KoreanTurk"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=kultfilmler.net&sz=%size%",
+        "fileHash": "sha256-9d5690f7b3e5e52592356e1636ace7091b10c9c571fb1cbef45bbcb1ddf4e9ec",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 21677,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie",
+            "TvSeries"
+        ],
+        "version": 14,
+        "internalName": "KultFilmler",
+        "description": "K\u00fclt Filmler \u00f6zenle en iyi filmleri derler ve iyi bir altyaz\u0131l\u0131 film izleme deneyimi sunmay\u0131 ama\u00e7lar",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/KultFilmler.cs3",
+        "name": "KultFilmler"
+    },
+    {
+        "iconUrl": "https://netfree2.cc/mobile/img/nf2/icon_x192.png",
+        "fileHash": "sha256-37028ffdaadfc5b30d095ec2938aac0c0d9bc0b160997fa0db47f9b445d3f8db",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 42782,
+        "status": 1,
+        "language": "hi",
+        "authors": [
+            "Horis, megix",
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie",
+            "TvSeries"
+        ],
+        "version": 32,
+        "internalName": "NetflixMirror",
+        "description": "Netflix, PrimeVideo Content in Multiple Languages",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/NetflixMirror.cs3",
+        "name": "NetflixMirror"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=pornoanne.com&sz=%size%",
+        "fileHash": "sha256-de4513f25ef818b224e6675f5e5f2372b5c791a7d97560840318f339e016e789",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 11617,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "kerimmkirac"
+        ],
+        "tvTypes": [
+            "NSFW"
+        ],
+        "version": 3,
+        "internalName": "PornoAnne",
+        "description": "Porno Anne ile en kaliteli HD porno filmleri burada! Sex videolar\u0131 ve siki\u015f sahneleri ile dolu anlara \u00fccretsiz porno izle yazarak ula\u015f ve siki\u015f seyret.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/PornoAnne.cs3",
+        "name": "PornoAnne"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=rarefilmm.com&sz=%size%",
+        "fileHash": "sha256-92c47cd636185063c17f6e06187907b1b252034c89258db55a2261101a1d61c2",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 14857,
+        "status": 1,
+        "language": "en",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 3,
+        "internalName": "RareFilmm",
+        "description": "The Cave of Forgotten Films",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/RareFilmm.cs3",
+        "name": "RareFilmm"
+    },
+    {
+        "iconUrl": "https://rectvapp.com.tr/wp-content/uploads/2024/08/cropped-cropped-Screenshot_2023-08-31_at_11.02.55_PM-removebg-preview-32x32.webp",
+        "fileHash": "sha256-3c0e1bdeb9bc0947515b555975256a2f50e74b5d628147e62a00eedfcfa5e410",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 24629,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun",
+            "yusiqo",
+            "inatchii",
+            "JustRelaxable"
+        ],
+        "tvTypes": [
+            "Movie",
+            "Live",
+            "TvSeries"
+        ],
+        "version": 97,
+        "internalName": "RecTV",
+        "description": "RecTv APK, T\u00fcrkiye\u2019deki en pop\u00fcler \u00c7evrimi\u00e7i Medya Ak\u0131\u015f platformlar\u0131ndan biridir. Filmlerin, Canl\u0131 Sporlar\u0131n, Web Dizilerinin ve \u00e7ok daha fazlas\u0131n\u0131n keyfini \u00fccretsiz \u00e7\u0131kar\u0131n.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/RecTV.cs3",
+        "name": "RecTV"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.setfilmizle.nl&sz=%size%",
+        "fileHash": "sha256-98d3360911c8932ba95350bb34ba242f1a8a110151819871e0ecb1924937e390",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 19094,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie",
+            "TvSeries"
+        ],
+        "version": 24,
+        "internalName": "SetFilmIzle",
+        "description": "Setfilmizle sitemizde, donma ya\u015famadan T\u00fcrk\u00e7e dublaj ve altyaz\u0131l\u0131 filmleri ile dizileri muhte\u015fem 1080p full HD kalitesinde izleyebilirsiniz.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/SetFilmIzle.cs3",
+        "name": "SetFilmIzle"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=sezonlukdizi6.com&sz=%size%",
+        "fileHash": "sha256-d5d748987e6ed17cddf51d38b0aeeaf54dfafb5dc3e5965269c7079ee516603c",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 18649,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun",
+            "JustRelaxable"
+        ],
+        "tvTypes": [
+            "TvSeries"
+        ],
+        "version": 6,
+        "internalName": "SezonlukDizi",
+        "description": "G\u00fcncel ve eski dizileri en iyi g\u00f6r\u00fcnt\u00fc kalitesiyle bulabilece\u011finiz yabanc\u0131 dizi izleme siteniz.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/SezonlukDizi.cs3",
+        "name": "SezonlukDizi"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.sinema.cx&sz=%size%",
+        "fileHash": "sha256-fd1a111670c04db9b1830a66676823a81bcd6a9308bd9f1c92b5adb4191f65cb",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 14605,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 18,
+        "internalName": "SinemaCX",
+        "description": "G\u00fcncel ve en iyi yabanc\u0131 filmleri y\u00fcksek g\u00f6r\u00fcnt\u00fc kalitesinde, T\u00fcrk\u00e7e dublaj ve altyaz\u0131 se\u00e7enekleriyle filmleri full izleyin.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/SinemaCX.cs3",
+        "name": "SinemaCX"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.superfilmgeldi.info&sz=%size%",
+        "fileHash": "sha256-3733d6c14d9ee8b564cab2161e9df7c067dea351c8476d6a23249a05fbd5555c",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 18169,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 22,
+        "internalName": "SuperFilmGeldi",
+        "description": "Hd film izliyerek arkada\u015flar\u0131n\u0131zla ve sevdiklerinizle iyi bir vakit ge\u00e7irmek istiyorsan\u0131z a\u00e7\u0131n bir film e\u011flenmeye bak\u0131n. Bilim kurgu filmleri, a\u015fk drama vah\u015fet a\u015fk romantik s\u0131rad\u0131\u015f\u0131 korku filmlerini izle.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/SuperFilmGeldi.cs3",
+        "name": "SuperFilmGeldi"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.tlctv.com.tr&sz=%size%",
+        "fileHash": "sha256-c1142c0618e0d9681ebf7c4547b4783ee9af95200f387e2857aff2650e292f9d",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 13143,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 19,
+        "internalName": "TLCtr",
+        "description": "TLC tr",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/TLCtr.cs3",
+        "name": "TLCtr"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=tranimaci.com&sz=%size%",
+        "fileHash": "sha256-b0bc79994d6bb711e00c19447a0d5fd1221f651c3bb79d969afe6262409ff31c",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 12649,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Anime"
+        ],
+        "version": 17,
+        "internalName": "TRanimaci",
+        "description": "TRanimeci - T\u00fcrkiye'nin Online Anime izleme sitesi.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/TRanimaci.cs3",
+        "name": "TRanimaci"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=asyalog.com&sz=%size%",
+        "fileHash": "sha256-7f9e3ad273b963fc8289e1c9f22ca7240e201b784790ed397a01b9c219c7cb28",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 13684,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "TvSeries"
+        ],
+        "version": 52,
+        "internalName": "TRasyalog",
+        "description": "TRasyalog izleme sitesi.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/TRasyalog.cs3",
+        "name": "TRasyalog"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=www.turkanime.co&sz=%size%",
+        "fileHash": "sha256-2cde7a086c8e06bdbf6999a72feeec769f349f4f04c4ad1668997590acfd8581",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 16522,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Anime"
+        ],
+        "version": 14,
+        "internalName": "TurkAnime",
+        "description": "T\u00fcrk Anime TV - T\u00fcrkiye'nin Online Anime izleme sitesi.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/TurkAnime.cs3",
+        "name": "TurkAnime"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=ugurfilm7.com&sz=%size%",
+        "fileHash": "sha256-60e5b54ef471f31353e3218b688dcf35d35d59314a3aabc9a9d2755afd0870a5",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 21343,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 13,
+        "internalName": "UgurFilm",
+        "description": "Yabanc\u0131 film izle, T\u00fcrk\u00e7e dublaj ve T\u00fcrk\u00e7e altyaz\u0131l\u0131 film se\u00e7enekleriyle 720p ve 1080p HD kalitesinde film izle - U\u011fur Film full hd film izle.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/UgurFilm.cs3",
+        "name": "UgurFilm"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=watch2movies.net&sz=%size%",
+        "fileHash": "sha256-66f807597f749929b7321de2dec1c87f0fb871e60f5d63773b61e1054644d741",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 18353,
+        "status": 3,
+        "language": "en",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 5,
+        "internalName": "Watch2Movies",
+        "description": "!!! YAPIM A\u015eAMASINDA !!! Watch2Movies is a Free Movies streaming site with zero ads. We let you watch movies online without having to register or paying, with over 10000 movies and TV-Series. You can also Download full movies from Watch2Movies and watch it later if you want.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/Watch2Movies.cs3",
+        "name": "Watch2Movies"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=webteizle2.com&sz=%size%",
+        "fileHash": "sha256-f5e87ea4b3533533d6e906445002134a0d5c40e6b78bb0c736f3d9cf9961360d",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 21260,
+        "status": 1,
+        "language": "tr",
+        "authors": [
+            "keyiflerolsun"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 15,
+        "internalName": "WebteIzle",
+        "description": "Her t\u00fcrl\u00fc filmi ister dublaj ister altyaz\u0131l\u0131, en kaliteli bir \u015fekilde izleyebilece\u011finiz ar\u015fivi en geni\u015f ger\u00e7ek film izleme siteniz.",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/WebteIzle.cs3",
+        "name": "WebteIzle"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=https://vi.xhspot.com&sz=256",
+        "jarFileSize": 139443,
+        "fileHash": "sha256-99580eff996369914f4f906a33cf2d09cf4850db29f1a3da4956eb5b378dec38",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 27322,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "SIX"
+        ],
+        "tvTypes": [
+            "NSFW"
+        ],
+        "version": 1,
+        "internalName": "Xhamster",
+        "jarUrl": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/Xhamster.jar",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/Xhamster.cs3",
+        "name": "Xhamster",
+        "jarHash": "sha256-aa022494a233991ec3051a1f4e8539da61ebff974de16bf6b847ec603f6d45bb"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=https://www.xnxx.com&sz=256",
+        "jarFileSize": 93355,
+        "fileHash": "sha256-0c6b7cd7df0ba507324120afaa3f609f769e9ed6ac2431979f33d9cd50068dc0",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/justdoitaddon/cs-turkiyem",
+        "fileSize": 23915,
+        "status": 1,
+        "language": "en",
+        "authors": [
+            "SIX"
+        ],
+        "tvTypes": [
+            "NSFW"
+        ],
+        "version": 2,
+        "internalName": "XNXX",
+        "jarUrl": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/XNXX.jar",
+        "url": "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/XNXX.cs3",
+        "name": "XNXX",
+        "jarHash": "sha256-1699e04fa98ec0707f3c4832dbec54323b45866feb251720e1b1ec535937d508"
+    }
+]
