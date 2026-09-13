@@ -15,6 +15,7 @@ class ExamplePlugin: Plugin() {
         // All providers should be added in this manner
         registerMainAPI(YouTubeProvider())
         registerMainAPI(HdFilmCehennemiProvider())
+        registerMainAPI(DiziPalProvider())
 
         openSettings = {
             val frag = BlankFragment(this)
