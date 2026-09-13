@@ -1,0 +1,9 @@
+{
+  "iconUrl": "https://images.seeklogo.com/logo-png/26/1/new-logo-png_seeklogo-264187.png",
+  "name": "CS Türkiyem",
+  "description": "Cloudstream için Türkçe film, dizi ve anime eklentileri (Kekik entegrasyonlu).",
+  "manifestVersion": 1,
+  "pluginLists": [
+    "https://raw.githubusercontent.com/justdoitaddon/cs-turkiyem/builds/plugins.json"
+  ]
+}
