@@ -12,7 +12,7 @@ class Hqporner : MainAPI() {
     override val hasMainPage          = true
     override var lang                 = "en"
     override val hasDownloadSupport   = true
-    override val supportedTypes       = setOf(TvType.NSFW)
+    override val supportedTypes       = setOf(TvType.Others)
     override val vpnStatus            = VPNStatus.MightBeNeeded
 
     override val mainPage = mainPageOf(
@@ -53,7 +53,7 @@ class Hqporner : MainAPI() {
         val href       = fixUrl(this.selectFirst("h3 a")!!.attr("href"))
         val posterUrl  = fixUrlNull(this.select("img").attr("src"))
 
-        return newMovieSearchResponse(title, LoadUrl(href, posterUrl).toJson(),TvType.NSFW) {
+        return newMovieSearchResponse(title, LoadUrl(href, posterUrl).toJson(),TvType.Others) {
             this.posterUrl = posterUrl
         }
 
@@ -78,7 +78,7 @@ class Hqporner : MainAPI() {
             .joinToString(" ") { it.replaceFirstChar { char -> char.uppercase() } }
         val poster= d.posterUrl
         val plot="Hqporner"
-        return newMovieLoadResponse(title, url, TvType.NSFW, d.href) {
+        return newMovieLoadResponse(title, url, TvType.Others, d.href) {
             this.posterUrl       = poster
             this.plot=plot
         }

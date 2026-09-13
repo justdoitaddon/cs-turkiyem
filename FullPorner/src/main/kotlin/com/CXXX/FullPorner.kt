@@ -14,7 +14,7 @@ class FullPorner : MainAPI() {
     override val hasQuickSearch       = false
     override val hasDownloadSupport   = true
     override val hasChromecastSupport = true
-    override val supportedTypes       = setOf(TvType.NSFW)
+    override val supportedTypes       = setOf(TvType.Others)
     override val vpnStatus            = VPNStatus.MightBeNeeded
 
     override val mainPage = mainPageOf(
@@ -47,7 +47,7 @@ class FullPorner : MainAPI() {
         val href = fixUrl(this.selectFirst("div.video-card div.video-card-body div.video-title a")!!.attr("href"))
         val posterUrl = fixUrlNull(this.select("div.video-card div.video-card-image a img").attr("data-src"))
 
-        return newMovieSearchResponse(title, href, TvType.NSFW) { this.posterUrl = posterUrl }
+        return newMovieSearchResponse(title, href, TvType.Others) { this.posterUrl = posterUrl }
     }
 
     override suspend fun search(query: String): List<SearchResponse> {
@@ -88,7 +88,7 @@ class FullPorner : MainAPI() {
     val actors = document.select("div.video-block div.single-video-left div.single-video-info-content p a").map { it.text() }
     val recommendations = document.select("div.video-block div.video-recommendation div.video-card").mapNotNull { it.toSearchResult() }
 
-    return newMovieLoadResponse(title, url, TvType.NSFW, url) {
+    return newMovieLoadResponse(title, url, TvType.Others, url) {
         this.posterUrl = posterUrl
         this.plot = description
         this.tags = tags

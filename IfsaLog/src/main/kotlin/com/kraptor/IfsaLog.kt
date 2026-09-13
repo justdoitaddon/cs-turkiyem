@@ -15,7 +15,7 @@ class IfsaLog : MainAPI() {
     override val hasMainPage          = true
     override var lang                 = "tr"
     override val hasQuickSearch       = false
-    override val supportedTypes       = setOf(TvType.NSFW)
+    override val supportedTypes       = setOf(TvType.Others)
 
     override val mainPage = mainPageOf(
         "${mainUrl}/"      to "Ana Sayfa",
@@ -42,7 +42,7 @@ class IfsaLog : MainAPI() {
         val href      = fixUrlNull(this.selectFirst("a")?.attr("href")) ?: return null
         val posterUrl = fixUrlNull(this.selectFirst("img")?.attr("src"))
 
-        return newMovieSearchResponse(title, href, TvType.NSFW) { this.posterUrl = posterUrl }
+        return newMovieSearchResponse(title, href, TvType.Others) { this.posterUrl = posterUrl }
     }
 
     override suspend fun search(query: String): List<SearchResponse> {
@@ -56,7 +56,7 @@ class IfsaLog : MainAPI() {
         val href      = fixUrlNull(this.selectFirst("a")?.attr("href")) ?: return null
         val posterUrl = fixUrlNull(this.selectFirst("img")?.attr("src"))
 
-        return newMovieSearchResponse(title, href, TvType.NSFW) { this.posterUrl = posterUrl }
+        return newMovieSearchResponse(title, href, TvType.Others) { this.posterUrl = posterUrl }
     }
 
     override suspend fun quickSearch(query: String): List<SearchResponse> = search(query)
@@ -74,7 +74,7 @@ class IfsaLog : MainAPI() {
         val tags            = listOf("+18","IfsaLog")
 
 
-        return newMovieLoadResponse(title, url, TvType.NSFW, url) {
+        return newMovieLoadResponse(title, url, TvType.Others, url) {
             this.posterUrl       = poster
             this.plot            = description
             this.tags            = tags

@@ -21,7 +21,7 @@ class Kalite18 : MainAPI() {
     override val hasMainPage          = true
     override var lang                 = "tr"
     override val hasQuickSearch       = false
-    override val supportedTypes       = setOf(TvType.NSFW)
+    override val supportedTypes       = setOf(TvType.Others)
 
 
     private val posterCache = mutableMapOf<String, String>()
@@ -57,7 +57,7 @@ override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageR
     val posterUrl = fixUrlNull(this.selectFirst("img")?.attr("data-src") ?: this.selectFirst("img")?.attr("src"))
     posterUrl?.let { posterCache[href] = it }
 
-    return newMovieSearchResponse(title, href, TvType.NSFW) { this.posterUrl = posterUrl }
+    return newMovieSearchResponse(title, href, TvType.Others) { this.posterUrl = posterUrl }
 }
 
 
@@ -73,7 +73,7 @@ override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageR
     val posterUrl = fixUrlNull(this.selectFirst("img")?.attr("data-src") ?: this.selectFirst("img")?.attr("src"))
     posterUrl?.let { posterCache[href] = it }
 
-    return newMovieSearchResponse(title, href, TvType.NSFW) { this.posterUrl = posterUrl }
+    return newMovieSearchResponse(title, href, TvType.Others) { this.posterUrl = posterUrl }
     }
 
     override suspend fun quickSearch(query: String): List<SearchResponse> = search(query)
@@ -91,7 +91,7 @@ override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageR
     val recommendations = document.select("article.loop-video").mapNotNull { it.toRecommendationResult() }
     
 
-    return newMovieLoadResponse(title, url, TvType.NSFW, url) {
+    return newMovieLoadResponse(title, url, TvType.Others, url) {
         this.posterUrl       = poster
         this.plot            = description
         
@@ -111,7 +111,7 @@ override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageR
     val href = fixUrlNull(aTag.attr("href")) ?: return null
     val posterUrl = fixUrlNull(imgTag?.attr("data-src"))
 
-    return newMovieSearchResponse(title, href, TvType.NSFW) {
+    return newMovieSearchResponse(title, href, TvType.Others) {
         this.posterUrl = posterUrl
     }
 }

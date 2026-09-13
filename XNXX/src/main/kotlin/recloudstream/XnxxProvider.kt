@@ -27,7 +27,7 @@ class XnxxProvider : MainAPI() {
     override var lang = "en"
     override val hasChromecastSupport = true
     override val supportedTypes = setOf(
-        TvType.NSFW
+        TvType.Others
     )
 
     companion object {
@@ -182,8 +182,8 @@ class XnxxProvider : MainAPI() {
 
         if (homePageListsResult.isEmpty() && page == 1) {
             homePageListsResult.add(HomePageList("Default Links (Fallback)", listOf(
-                newMovieSearchResponse(name = "Asian Woman", url = "$mainUrl/search/asian_woman", type = TvType.NSFW) {},
-                newMovieSearchResponse(name = "Today's Selection", url = "$mainUrl/todays-selection", type = TvType.NSFW) {}
+                newMovieSearchResponse(name = "Asian Woman", url = "$mainUrl/search/asian_woman", type = TvType.Others) {},
+                newMovieSearchResponse(name = "Today's Selection", url = "$mainUrl/todays-selection", type = TvType.Others) {}
             )))
             hasNextMainPage = false 
         }
@@ -218,7 +218,7 @@ class XnxxProvider : MainAPI() {
         val metadataElement = this.selectFirst(".thumb-under p.metadata")
         val qualityText = metadataElement?.selectFirst("span.video-hd")?.text()?.trim()
         
-        return newMovieSearchResponse(name = title, url = finalHref, type = TvType.NSFW) {
+        return newMovieSearchResponse(name = title, url = finalHref, type = TvType.Others) {
             this.posterUrl = posterUrl
             this.quality = getQualityFromString(qualityText)
         }
@@ -298,7 +298,7 @@ class XnxxProvider : MainAPI() {
                             relatedVideos.add(newMovieSearchResponse(
                                 name = relatedTitle,
                                 url = finalRelatedUrl,
-                                type = TvType.NSFW
+                                type = TvType.Others
                             ) {
                                 this.posterUrl = related.i?.let { if (it.startsWith("//")) "https:$it" else it } // Sử dụng thuộc tính của RelatedItemParse
                             })
@@ -324,7 +324,7 @@ class XnxxProvider : MainAPI() {
             } catch (_: Exception) {}
         }
 
-        return newMovieLoadResponse(name = title, url = url, type = TvType.NSFW, dataUrl = videoDataString) {
+        return newMovieLoadResponse(name = title, url = url, type = TvType.Others, dataUrl = videoDataString) {
             this.posterUrl = poster
             this.plot = description
             this.tags = tags

@@ -122,7 +122,7 @@ class XhamsterProvider: MainAPI() {
     override var name = "Xhamster"
     override val hasMainPage = true
     override var lang = "vi"
-    override val supportedTypes = setOf(TvType.NSFW)
+    override val supportedTypes = setOf(TvType.Others)
 
     // Hàm phụ trợ parse JSON (No changes needed here, uses unified InitialsJson)
      private fun getInitialsJson(html: String): InitialsJson? {
@@ -153,7 +153,7 @@ class XhamsterProvider: MainAPI() {
         }
         val fixedPoster = posterUrl?.trim()?.let { fixUrl(it) }
 
-        return newMovieSearchResponse(title, fixedHref, TvType.NSFW) {
+        return newMovieSearchResponse(title, fixedHref, TvType.Others) {
             this.posterUrl = fixedPoster
         }
     }
@@ -174,7 +174,7 @@ class XhamsterProvider: MainAPI() {
                 val title = item.title ?: return@mapNotNull null
                 val href = fixUrlNull(item.pageURL) ?: return@mapNotNull null
                 val poster = fixUrlNull(item.thumbUrl)
-                newMovieSearchResponse(title, href, TvType.NSFW) { this.posterUrl = poster }
+                newMovieSearchResponse(title, href, TvType.Others) { this.posterUrl = poster }
             }
             if (!items.isNullOrEmpty()) {
                 listTitle = "Video Trang Chủ" // Đặt lại tiêu đề nếu lấy từ JSON
@@ -235,7 +235,7 @@ class XhamsterProvider: MainAPI() {
                  val title = item.title ?: return@mapNotNull null
                  val href = fixUrlNull(item.pageURL) ?: return@mapNotNull null
                  val poster = fixUrlNull(item.thumbUrl)
-                 newMovieSearchResponse(title, href, TvType.NSFW) {
+                 newMovieSearchResponse(title, href, TvType.Others) {
                      this.posterUrl = poster
                  }
              }
@@ -318,7 +318,7 @@ class XhamsterProvider: MainAPI() {
 
         println("Final recommendations count being added to LoadResponse: ${recommendations?.size}")
 
-        return newMovieLoadResponse(title, url, TvType.NSFW, url) {
+        return newMovieLoadResponse(title, url, TvType.Others, url) {
              this.plot = plot
              this.posterUrl = fixedPoster
              this.tags = tags

@@ -15,7 +15,7 @@ class PornoAnne : MainAPI() {
     override val hasMainPage          = true
     override var lang                 = "tr"
     override val hasQuickSearch       = false
-    override val supportedTypes       = setOf(TvType.NSFW)
+    override val supportedTypes       = setOf(TvType.Others)
 
     override val mainPage = mainPageOf(
         "${mainUrl}"      to "Tüm Videolar",

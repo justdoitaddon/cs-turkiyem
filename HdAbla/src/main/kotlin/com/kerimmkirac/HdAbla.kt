@@ -13,7 +13,7 @@ class HdAbla : MainAPI() {
     override val hasMainPage = true
     override var lang = "tr"
     override val hasQuickSearch = false
-    override val supportedTypes = setOf(TvType.NSFW)
+    override val supportedTypes = setOf(TvType.Others)
 
     override val mainPage = mainPageOf(
         "$mainUrl" to "Tüm Videolar",
@@ -39,7 +39,7 @@ class HdAbla : MainAPI() {
         val title = anchor.attr("title")?.trim() ?: return null
         val poster = fixUrlNull(this.selectFirst("img")?.attr("src"))
 
-        return newMovieSearchResponse(title, "$href|$poster", TvType.NSFW) {
+        return newMovieSearchResponse(title, "$href|$poster", TvType.Others) {
             posterUrl = poster
         }
     }
@@ -65,7 +65,7 @@ class HdAbla : MainAPI() {
         val title = anchor.attr("title")?.trim() ?: return null
         val poster = fixUrlNull(this.selectFirst("img")?.attr("src"))
 
-        return newMovieSearchResponse(title, "$href|$poster", TvType.NSFW) {
+        return newMovieSearchResponse(title, "$href|$poster", TvType.Others) {
             posterUrl = poster
         }
     }
@@ -86,7 +86,7 @@ class HdAbla : MainAPI() {
         val recommendations = doc.select("div.related-posts div.item-video")
             .mapNotNull { it.toRecommendationResult() }
 
-        return newMovieLoadResponse(title, url, TvType.NSFW, url) {
+        return newMovieLoadResponse(title, url, TvType.Others, url) {
             this.posterUrl = poster
             this.plot = description
             this.tags = tags
@@ -100,7 +100,7 @@ class HdAbla : MainAPI() {
         val title = aTag.attr("title")?.trim() ?: return null
         val poster = fixUrlNull(this.selectFirst("img")?.attr("src"))
 
-        return newMovieSearchResponse(title, "$href|$poster", TvType.NSFW) {
+        return newMovieSearchResponse(title, "$href|$poster", TvType.Others) {
             posterUrl = poster
         }
     }
