@@ -2,6 +2,7 @@ package com.example
 
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.utils.ExtractorLink
+import com.lagradost.cloudstream3.utils.loadExtractor
 import org.jsoup.nodes.Element
 
 class DiziPalProvider : MainAPI() {
@@ -69,7 +70,17 @@ class DiziPalProvider : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
-        // Placeholder for DiziPal extractors
+        val document = app.get(data).document
+        
+        // Find all iframes that might contain the video player
+        val iframes = document.select("iframe")
+        for (iframe in iframes) {
+            val src = iframe.attr("data-src").takeIf { it.isNotEmpty() } ?: iframe.attr("src")
+            if (src.isNotEmpty() && src.startsWith("http")) {
+                loadExtractor(src, data, subtitleCallback, callback)
+            }
+        }
+        
         return true
     }
 }
