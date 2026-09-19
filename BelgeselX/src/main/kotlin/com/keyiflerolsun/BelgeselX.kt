@@ -159,12 +159,13 @@ class BelgeselX : MainAPI() {
                 }
                 
                 callback.invoke(
-                    newExtractorLink(
+                    ExtractorLink(
                         source = thisName,
                         name = thisName,
                         url = videoUrl,
                         referer = referer,
-                        quality = getQualityFromName(quality.replace("p", "").toIntOrNull()?.toString() ?: quality)
+                        quality = getQualityFromName(quality.replace("p", "").toIntOrNull()?.toString() ?: quality),
+                        type = if (videoUrl.contains(".m3u8")) ExtractorLinkType.M3U8 else ExtractorLinkType.VIDEO
                     )
                 )
             }
