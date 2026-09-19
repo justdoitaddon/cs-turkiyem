@@ -27,35 +27,22 @@ class CizgiMax : MainAPI() {
 
     override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
         val document = app.get("${mainUrl}/diziler/page/${page}${request.data}").document
-        val home     = document.select("ul.filter-results li").mapNotNull { it.toSearchResult() }
+        val home     = document.select("div.film-item").mapNotNull { it.toSearchResult() }
 
         return newHomePageResponse(request.name, home)
     }
 
     private fun Element.toSearchResult(): SearchResponse? {
-        val title     = this.selectFirst("h2.truncate")?.text()?.trim() ?: return null
-        val href      = fixUrlNull(this.selectFirst("div.poster-subject a")?.attr("href")) ?: return null
-        val posterUrl = fixUrlNull(this.selectFirst("div.poster-media img")?.attr("data-src"))
+        val title     = this.selectFirst("a.film-name")?.text()?.trim() ?: return null
+        val href      = fixUrlNull(this.selectFirst("a.poster")?.attr("href")) ?: return null
+        val posterUrl = fixUrlNull(this.selectFirst("a.poster img")?.attr("src"))
 
         return newTvSeriesSearchResponse(title, href, TvType.Cartoon) { this.posterUrl = posterUrl }
     }
 
     override suspend fun search(query: String): List<SearchResponse> {
-        val response = app.get("${mainUrl}/ajaxservice/index.php?qr=${query}").parsedSafe<SearchResult>()?.data?.result ?: return listOf()
-
-        return response.mapNotNull { result ->
-            if (result.sName.contains(".Bölüm") || result.sName.contains(".Sezon") || result.sName.contains("-Sezon") || result.sName.contains("-izle")) {
-                return@mapNotNull null
-            }
-
-            newTvSeriesSearchResponse(
-                result.sName,
-                fixUrl(result.sLink),
-                TvType.Cartoon
-            ) {
-                this.posterUrl = fixUrlNull(result.sImage)
-            }
-        }
+        val document = app.get("${mainUrl}/ara/?q=${query}").document
+        return document.select("div.film-item").mapNotNull { it.toSearchResult() }
     }
 
     override suspend fun quickSearch(query: String): List<SearchResponse> = search(query)
@@ -63,21 +50,22 @@ class CizgiMax : MainAPI() {
     override suspend fun load(url: String): LoadResponse? {
         val document = app.get(url).document
 
-        val title       = document.selectFirst("h1.page-title")?.text() ?: return null
-        val poster      = fixUrlNull(document.selectFirst("img.series-profile-thumb")?.attr("src")) ?: return null
-        val description = document.selectFirst("p#tv-series-desc")?.text()?.trim()
-        val tags        = document.select("div.genre-item a").mapNotNull { it.text().trim() }
+        val title       = document.selectFirst("a.anime-title-link")?.text() ?: return null
+        val poster      = fixUrlNull(document.selectFirst("meta[property=og:image]")?.attr("content")) ?: return null
+        val description = document.selectFirst("meta[property=og:description]")?.attr("content")
+        val tags        = document.select("a[href^=/ara/?genre=]").mapNotNull { it.text().trim() }
 
 
-        val episodes = document.select("div.asisotope div.ajax_post").mapNotNull {
-            val epName     = it.selectFirst("span.episode-names")?.text()?.trim() ?: return@mapNotNull null
-            val epHref     = fixUrlNull(it.selectFirst("a")?.attr("href")) ?: return@mapNotNull null
-            val epEpisode  = Regex("""(\d+)\.Bölüm""").find(epName)?.groupValues?.get(1)?.toIntOrNull()
-            val seasonName = it.selectFirst("span.season-name")?.text()?.trim() ?: ""
-            val epSeason   = Regex("""(\d+)\.Sezon""").find(seasonName)?.groupValues?.get(1)?.toIntOrNull() ?: 1
+        val episodes = document.select("a.ep-num-btn").mapNotNull {
+            val epHref     = fixUrlNull(it.attr("href")) ?: return@mapNotNull null
+            val epEpisode  = it.selectFirst("span.ep-num-label")?.text()?.trim()?.toIntOrNull()
+            
+            // Try extracting season from the URL (/ninjago-1-sezon-0-bolum-izle/)
+            val epSeasonMatch = Regex("""-(\d+)-sezon-""").find(epHref)
+            val epSeason = epSeasonMatch?.groupValues?.get(1)?.toIntOrNull() ?: 1
 
             newEpisode(epHref) {
-                this.name = epName
+                this.name = "Bölüm $epEpisode"
                 this.season = epSeason
                 this.episode = epEpisode
             }
@@ -91,16 +79,38 @@ class CizgiMax : MainAPI() {
     }
 
     override suspend fun loadLinks(data: String, isCasting: Boolean, subtitleCallback: (SubtitleFile) -> Unit, callback: (ExtractorLink) -> Unit): Boolean {
-        Log.d("CZGM", "data » $data")
         val document = app.get(data).document
-
-        document.select("ul.linkler li").forEach {
-            val iframe = fixUrlNull(it.selectFirst("a")?.attr("data-frame")) ?: return@forEach
-            Log.d("CZGM", "iframe » $iframe")
-
-            loadExtractor(iframe, "${mainUrl}/", subtitleCallback, callback)
+        
+        val scriptContent = document.select("script").map { it.data() }.joinToString("\n")
+        val serversB64 = Regex("""JSON\.parse\(atob\("([^"]+)"\)""").find(scriptContent)?.groupValues?.get(1)
+        
+        if (serversB64 != null) {
+            try {
+                val decoded = String(android.util.Base64.decode(serversB64, android.util.Base64.DEFAULT))
+                val servers = AppUtils.parseJson<List<CizgiMaxServer>>(decoded)
+                servers.forEach { server ->
+                    val streamUrl = fixUrlNull(server.streamUrl) ?: return@forEach
+                    val serverUrl = "$mainUrl$streamUrl"
+                    
+                    val iframeResp = app.get(serverUrl, referer = data).text
+                    val iframeUrl = Regex(""""url":"([^"]+)"""").find(iframeResp)?.groupValues?.get(1)?.replace("\\/", "/")
+                    
+                    if (iframeUrl != null) {
+                        loadExtractor(iframeUrl, data, subtitleCallback, callback)
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e("CZGM", "Error parsing servers: ${e.message}")
+            }
         }
 
         return true
     }
+
+    data class CizgiMaxServer(
+        @com.fasterxml.jackson.annotation.JsonProperty("type") val type: String?,
+        @com.fasterxml.jackson.annotation.JsonProperty("streamUrl") val streamUrl: String?,
+        @com.fasterxml.jackson.annotation.JsonProperty("label") val label: String?,
+        @com.fasterxml.jackson.annotation.JsonProperty("lang") val lang: String?
+    )
 }
