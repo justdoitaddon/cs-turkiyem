@@ -40,7 +40,7 @@ class BelgeselX : MainAPI() {
 
     override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
         val document = app.get("${request.data}${page}", cacheTime = 60).document
-        val home     = document.select("div.gen-movie-contain > div.gen-info-contain > div.gen-movie-info").mapNotNull { it.toSearchResult() }
+        val home     = document.select("div.px-grid > a.px-card").mapNotNull { it.toSearchResult() }
 
         return newHomePageResponse(request.name, home)
     }
@@ -53,9 +53,9 @@ class BelgeselX : MainAPI() {
     }
 
     private fun Element.toSearchResult(): SearchResponse? {
-        val title     = this.selectFirst("div.gen-movie-info > h3 a")?.text()?.trim()?.toTitleCase() ?: return null
-        val href      = fixUrlNull(this.selectFirst("div.gen-movie-info > h3 a")?.attr("href")) ?: return null
-        val posterUrl = fixUrlNull(this.parent()?.parent()?.selectFirst("div.gen-movie-img > img")?.attr("src"))
+        val title     = this.selectFirst("div.px-card-info > div.px-card-title")?.text()?.trim()?.toTitleCase() ?: return null
+        val href      = fixUrlNull(this.attr("href")) ?: return null
+        val posterUrl = fixUrlNull(this.selectFirst("div.px-card-poster > img.px-card-img")?.attr("src"))
 
         return newTvSeriesSearchResponse(title, href, TvType.Documentary) { this.posterUrl = posterUrl }
     }
@@ -63,11 +63,11 @@ class BelgeselX : MainAPI() {
     override suspend fun search(query: String): List<SearchResponse> {
         val cx = "016376594590146270301:iwmy65ijgrm" // ! Might change in the future
 
-        val tokenResponse = app.get("https://cse.google.com/cse.js?cx=${cx}")
+        val tokenResponse = app.get("https://cse.google.com/cse.js?cx=${cx}", referer = "https://belgeselx.com/")
         val cseLibVersion = Regex("""cselibVersion": "(.*)"""").find(tokenResponse.text)?.groupValues?.get(1)
         val cseToken      = Regex("""cse_token": "(.*)"""").find(tokenResponse.text)?.groupValues?.get(1)
 
-        val response = app.get("https://cse.google.com/cse/element/v1?rsz=filtered_cse&num=100&hl=tr&source=gcsc&cselibv=${cseLibVersion}&cx=${cx}&q=${query}&safe=off&cse_tok=${cseToken}&sort=&exp=cc%2Capo&oq=${query}&callback=google.search.cse.api9969&rurl=https%3A%2F%2Fbelgeselx.com%2F")
+        val response = app.get("https://cse.google.com/cse/element/v1?rsz=filtered_cse&num=100&hl=tr&source=gcsc&cselibv=${cseLibVersion}&cx=${cx}&q=${query}&safe=off&cse_tok=${cseToken}&sort=&exp=cc%2Capo&oq=${query}&callback=google.search.cse.api9969&rurl=https%3A%2F%2Fbelgeselx.com%2F", referer = "https://belgeselx.com/")
         Log.d("BLX", "response » $response")
         val titles     = Regex(""""titleNoFormatting": "(.*)"""").findAll(response.text).map { it.groupValues[1] }.toList()
         val urls       = Regex(""""ogImage": "(.*)"""").findAll(response.text).map { it.groupValues[1] }.toList()
@@ -100,30 +100,29 @@ class BelgeselX : MainAPI() {
     override suspend fun load(url: String): LoadResponse? {
         val document = app.get(url).document
 
-        val title       = document.selectFirst("h2.gen-title")?.text()?.trim()?.toTitleCase() ?: return null
-        val poster      = fixUrlNull(document.selectFirst("div.gen-tv-show-top img")?.attr("src")) ?: return null
-        val description = document.selectFirst("div.gen-single-tv-show-info p")?.text()?.trim()
+        val title       = document.selectFirst(".px-hero-title")?.text()?.trim()?.toTitleCase() ?: return null
+        val poster      = fixUrlNull(document.selectFirst(".px-dizi-poster img")?.attr("src") ?: document.selectFirst(".px-dizi-card-poster img")?.attr("src")) ?: return null
+        val description = document.selectFirst(".px-hero-desc")?.text()?.trim()
         val tags        = document.select("div.gen-socail-share a[href*='belgeselkanali']").map { it.attr("href").split("/").last().replace("-", " ").toTitleCase() }
 
         var counter  = 0
-        val episodes = document.select("div.gen-movie-contain").mapNotNull {
-            val epName     = it.selectFirst("div.gen-movie-info h3 a")?.text()?.trim() ?: return@mapNotNull null
-            val epHref     = fixUrlNull(it.selectFirst("div.gen-movie-info h3 a")?.attr("href")) ?: return@mapNotNull null
+        val episodes = Regex("""diziGetir\('(\d+)','(\d+)','(\d+)','(\d+)','([^']+)','[^']*','[^']*','(\d+)','(\d+)','[^']*','([^']+)'""").findAll(document.html()).mapNotNull { match ->
+            val id        = match.groupValues[1]
+            val ic1       = match.groupValues[2]
+            val ic2       = match.groupValues[3]
+            val ic3       = match.groupValues[4]
+            val epName    = match.groupValues[5]
+            val epSeason  = match.groupValues[6].toIntOrNull() ?: 1
+            val epEpisode = match.groupValues[7].toIntOrNull() ?: ++counter
 
-            val seasonName = it.selectFirst("div.gen-single-meta-holder ul li")?.text()?.trim() ?: ""
-            var epEpisode  = Regex("""Bölüm (\d+)""").find(seasonName)?.groupValues?.get(1)?.toIntOrNull() ?: 0
-            val epSeason   = Regex("""Sezon (\d+)""").find(seasonName)?.groupValues?.get(1)?.toIntOrNull() ?: 1
+            val dataString = "$id,$ic1,$ic2,$ic3,$url"
 
-            if (epEpisode == 0) {
-                epEpisode = counter++
-            }
-
-            newEpisode(epHref) {
+            newEpisode(dataString) {
                 this.name    = epName
                 this.season  = epSeason
                 this.episode = epEpisode
             }
-        }
+        }.toList()
 
         return newTvSeriesLoadResponse(title, url, TvType.Documentary, episodes) {
             this.posterUrl = poster
@@ -132,53 +131,45 @@ class BelgeselX : MainAPI() {
         }
     }
 
-override suspend fun loadLinks(data: String, isCasting: Boolean, subtitleCallback: (SubtitleFile) -> Unit, callback: (ExtractorLink) -> Unit): Boolean {
-    Log.d("BLX", "data » $data")
-    
-    val source = app.get(data)
+    override suspend fun loadLinks(data: String, isCasting: Boolean, subtitleCallback: (SubtitleFile) -> Unit, callback: (ExtractorLink) -> Unit): Boolean {
+        val parts = data.split(",")
+        if (parts.size < 5) return false
+        val id = parts[0]
+        val icArray = listOf(parts[1], parts[2], parts[3]).filter { it != "0" }
+        val referer = parts[4]
 
-    // Sayfa kaynağından ilk fnc_addWatch içeren div elemanının data-episode numarasını al
-    val firstEpisodeId = Regex("""<div[^>]*class=["'][^"']*fnc_addWatch[^"']*["'][^>]*data-episode=["'](\d+)["']""")
-        .find(source.text)?.groupValues?.get(1)
+        val srcMap = mapOf("0" to "new5", "2" to "new1", "5" to "new4", "3" to "new2", "4" to "new3")
 
-    if (firstEpisodeId == null) {
-        Log.e("BLX", "İlk fnc_addWatch data-episode bulunamadı.")
-        return false
-    }
+        icArray.forEachIndexed { index, ic ->
+            val f = srcMap[ic] ?: "default"
+            val sira = index + 1
+            val iframeUrl = "https://belgeselx.com/video/data/$f.php?id=$id&sira=$sira"
+            Log.d("BLX", "iframeUrl oluşturuldu » $iframeUrl")
 
-    Log.d("BLX", "İlk fnc_addWatch data-episode: $firstEpisodeId")
-    
-    // Bu ID ile iframe URL’si oluştur
-    val iframeUrl = "https://belgeselx.com/video/data/new4.php?id=$firstEpisodeId"
-    Log.d("BLX", "iframeUrl oluşturuldu » $iframeUrl")
-    
-    // iframe URL’si üzerinden veriyi al
-    val alternatifResp = app.get(iframeUrl, referer = data)
+            val alternatifResp = app.get(iframeUrl, referer = referer)
 
-    // new4.php içindeki video linklerini parse et
-    Regex("""file:"([^"]+)", label: "([^"]+)""").findAll(alternatifResp.text).forEach {
-        var thisName = this.name
-        val videoUrl = it.groupValues[1]
-        var quality = it.groupValues[2]
+            Regex("""file:\s*"([^"]+)",\s*label:\s*"([^"]+)"""").findAll(alternatifResp.text).forEach {
+                var thisName = this.name
+                val videoUrl = it.groupValues[1]
+                var quality = it.groupValues[2]
 
-        if (quality == "FULL") {
-            quality = "1080p"
-            thisName = "Google"
-        }
-        // Callback ile video bilgilerini geri gönder
-        callback.invoke(
-            newExtractorLink(
-                source = thisName,
-                name = thisName,
-                url = videoUrl,
-                type = ExtractorLinkType.VIDEO
-            ) {
-                this.referer = data
-                quality = getQualityFromName(quality).toString()
+                if (quality.contains("FULL", ignoreCase = true)) {
+                    quality = "1080p"
+                    thisName = "Google"
+                }
+                
+                callback.invoke(
+                    newExtractorLink(
+                        source = thisName,
+                        name = thisName,
+                        url = videoUrl,
+                        referer = referer,
+                        quality = getQualityFromName(quality.replace("p", "").toIntOrNull()?.toString() ?: quality)
+                    )
+                )
             }
-        )
-    }
+        }
 
-    return true
-}
+        return true
+    }
 }
