@@ -1,4 +1,4 @@
-import com.lagradost.cloudstream3.gradle.CloudstreamExtension
+﻿import com.lagradost.cloudstream3.gradle.CloudstreamExtension
 import com.android.build.gradle.BaseExtension
 
 buildscript {
@@ -12,7 +12,7 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:8.7.3")
         // Cloudstream gradle plugin which makes everything work and builds plugins
-        classpath("com.github.recloudstream:gradle:-SNAPSHOT")
+        classpath("com.github.recloudstream:gradle:master-SNAPSHOT")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0")
     }
 }
@@ -81,12 +81,12 @@ subprojects {
         // these dependencies can include any of those which are added by the app,
         // but you dont need to include any of them if you dont need them
         // https://github.com/recloudstream/cloudstream/blob/master/app/build.gradle
-        implementation(kotlin("stdlib"))                                              // Kotlin'in temel kütüphanesi
-        implementation("com.github.Blatzar:NiceHttp:0.4.13")                          // HTTP kütüphanesi
-        implementation("org.jsoup:jsoup:1.19.1")                                      // HTML ayrıştırıcı
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")   // Kotlin için Jackson JSON kütüphanesi
-        implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")          // JSON-nesne dönüştürme kütüphanesi
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")      // Kotlin için asenkron işlemler
+        implementation(kotlin("stdlib"))                                              // Kotlin'in temel kÃ¼tÃ¼phanesi
+        implementation("com.github.Blatzar:NiceHttp:0.4.13")                          // HTTP kÃ¼tÃ¼phanesi
+        implementation("org.jsoup:jsoup:1.19.1")                                      // HTML ayrÄ±ÅŸtÄ±rÄ±cÄ±
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")   // Kotlin iÃ§in Jackson JSON kÃ¼tÃ¼phanesi
+        implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")          // JSON-nesne dÃ¶nÃ¼ÅŸtÃ¼rme kÃ¼tÃ¼phanesi
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")      // Kotlin iÃ§in asenkron iÅŸlemler
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
         implementation("com.github.vidstige:jadb:v1.2.1")
     }
@@ -95,3 +95,4 @@ subprojects {
 task<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
+
