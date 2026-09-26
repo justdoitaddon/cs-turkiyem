@@ -5,14 +5,22 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        // Shitpack repo which contains our tools and dependencies
-        maven("https://jitpack.io")
+        maven("https://jitpack.io") {
+            metadataSources { artifact() }
+            content {
+                includeModule("com.github.recloudstream.gradle", "gradle")
+            }
+        }
+        maven("https://jitpack.io") {
+            content {
+                excludeModule("com.github.recloudstream.gradle", "gradle")
+            }
+        }
     }
 
     dependencies {
         classpath("com.android.tools.build:gradle:8.7.3")
-        // Cloudstream gradle plugin which makes everything work and builds plugins
-        classpath("com.github.recloudstream.gradle:gradle:master-81b1d424d2-1@jar")
+        classpath("com.github.recloudstream.gradle:gradle:master-81b1d424d2-1")
         classpath("org.ow2.asm:asm:9.4")
         classpath("org.ow2.asm:asm-tree:9.4")
         classpath("com.github.vidstige:jadb:v1.2.1")
@@ -38,9 +46,7 @@ subprojects {
     apply(plugin = "com.lagradost.cloudstream3.gradle")
 
     cloudstream {
-        // when running through github workflow, GITHUB_REPOSITORY should contain current repository name
         setRepo(System.getenv("GITHUB_REPOSITORY") ?: "https://github.com/keyiflerolsun/Kekik-cloudstream")
-
         authors = listOf("keyiflerolsun")
     }
 
@@ -73,23 +79,18 @@ subprojects {
         }
     }
 
-
     dependencies {
         val cloudstream by configurations
         val implementation by configurations
 
-        // Stubs for all Cloudstream classes
         cloudstream("com.lagradost:cloudstream3:pre-release")
 
-        // these dependencies can include any of those which are added by the app,
-        // but you dont need to include any of them if you dont need them
-        // https://github.com/recloudstream/cloudstream/blob/master/app/build.gradle
-        implementation(kotlin("stdlib"))                                              // Kotlin'in temel kÃ¼tÃ¼phanesi
-        implementation("com.github.Blatzar:NiceHttp:0.4.13")                          // HTTP kÃ¼tÃ¼phanesi
-        implementation("org.jsoup:jsoup:1.19.1")                                      // HTML ayrÄ±ÅŸtÄ±rÄ±cÄ±
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")   // Kotlin iÃ§in Jackson JSON kÃ¼tÃ¼phanesi
-        implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")          // JSON-nesne dÃ¶nÃ¼ÅŸtÃ¼rme kÃ¼tÃ¼phanesi
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")      // Kotlin iÃ§in asenkron iÅŸlemler
+        implementation(kotlin("stdlib"))                                              // Kotlin'in temel kǬtǬphanesi
+        implementation("com.github.Blatzar:NiceHttp:0.4.13")                          // HTTP kǬtǬphanesi
+        implementation("org.jsoup:jsoup:1.19.1")                                      // HTML ayrYtrc
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")   // Kotlin iin Jackson JSON kǬtǬphanesi
+        implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")          // JSON-nesne dnǬYtǬrme kǬtǬphanesi
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")      // Kotlin iin asenkron iYlemler
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
         implementation("com.github.vidstige:jadb:v1.2.1")
     }
@@ -98,12 +99,3 @@ subprojects {
 task<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
-
-
-
-
-
-
-
-
-
