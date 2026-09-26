@@ -59,7 +59,7 @@ subprojects {
             targetSdk = 35
         }
 
-        lint { abortOnError = false }
+        lintOptions { isAbortOnError = false }
 
         compileOptions {
             sourceCompatibility = JavaVersion.VERSION_11
@@ -101,4 +101,5 @@ subprojects {
 task<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
+
 
