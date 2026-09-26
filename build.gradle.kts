@@ -6,7 +6,7 @@ buildscript {
         google()
         mavenCentral()
         // Shitpack repo which contains our tools and dependencies
-        maven("https://jitpack.io") { metadataSources { mavenPom(); artifact() } }
+        maven("https://jitpack.io") { metadataSources { artifact() } }
     }
 
     dependencies {
@@ -21,7 +21,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven("https://jitpack.io") { metadataSources { mavenPom(); artifact() } }
+        maven("https://jitpack.io") { metadataSources { artifact() } }
     }
 }
 
@@ -95,6 +95,7 @@ subprojects {
 task<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
+
 
 
 
