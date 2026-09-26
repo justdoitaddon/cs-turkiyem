@@ -12,7 +12,10 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:8.7.3")
         // Cloudstream gradle plugin which makes everything work and builds plugins
-        classpath("com.github.recloudstream:gradle:-SNAPSHOT")
+        classpath("com.github.recloudstream.gradle:gradle:master-81b1d424d2-1@jar")
+        classpath("org.ow2.asm:asm:9.4")
+        classpath("org.ow2.asm:asm-tree:9.4")
+        classpath("com.github.vidstige:jadb:v1.2.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0")
     }
 }
@@ -95,6 +98,9 @@ subprojects {
 task<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
+
+
+
 
 
 
