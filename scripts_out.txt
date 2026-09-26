@@ -1,0 +1,1352 @@
+
+
+      jQuery(document).ready(function(){
+
+        $('#px-yorum-form2').submit(function(){
+
+          var form     = $(this);
+
+          var textarea = $('#px-yorum-text2');
+
+          var text     = textarea.val().trim();
+
+          if (!text) return false;
+
+
+
+          var belgeselid = window.sonSecilen || 16336;
+
+          if (!belgeselid) {
+
+            Swal.fire({ icon:'warning', title:'Önce bir bölüm seçin.', timer:2000, showConfirmButton:false, background:'#13131f', color:'#d8d8e8' });
+
+            return false;
+
+          }
+
+
+
+          var btn = form.find('button[type=submit]');
+
+          btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Gönderiliyor...');
+
+          $.ajax({
+
+            type: 'POST',
+
+            url:  'https://belgeselx.com/mofy/php/yorumgonder40.php'
+
+                  + '?belgeselid=' + belgeselid
+
+                  + '&diziid=982',
+
+            data: { text: text },
+
+            complete: function(){
+
+              btn.prop('disabled', false).html('<i class="fa fa-paper-plane"></i> Gönder');
+
+            },
+
+            success: function(resp){
+
+              var r = {};
+
+              try { r = JSON.parse(resp); } catch(e) { r = {ok:true}; }
+
+              if (r.ok === false) {
+
+                Swal.fire({ icon:'error', title:'Hata!', text: r.msg || 'Yorum gönderilemedi.', timer:2500, showConfirmButton:false, background:'#13131f', color:'#d8d8e8' });
+
+                return;
+
+              }
+
+              $('.px-empty-comments').remove();
+
+              if ($('.px-comment-list').length === 0) {
+
+                $('#px-yorum-listesi').prepend('<div class="px-comment-list"></div>');
+
+              }
+
+              var safeText = $('<div>').text(text).html();
+
+              var html = '<div class="px-comment" style="animation:fadeIn .4s ease">'
+
+                + '<div class="px-c-head">'
+
+                +   '<img class="px-c-av" src="https://belgeselx.com/img/photo.jpg" alt="Ziyaretçi">'
+
+                +   '<div class="px-c-meta">'
+
+                +     '<a href="#" class="px-c-name">Ziyaretçi</a>'
+
+                +     '<span class="px-c-time">az önce</span>'
+
+                +   '</div>'
+
+                +   '<span class="px-c-ep-badge"><i class="fa fa-play-circle"></i> Mevcut bölüm</span>'
+
+                + '</div>'
+
+                + '<div class="px-c-text">'+safeText+'</div>'
+
+                + '<div class="px-c-actions"><span style="font-size:12px;color:var(--c-gold);"><i class="fa fa-clock"></i> Onay bekliyor...</span></div>'
+
+                + '</div>';
+
+              $('.px-comment-list').prepend(html);
+
+              textarea.val('');
+
+              Swal.fire({ icon:'success', title:'Yorumun alındı!', text:'Onaylandıktan sonra herkese görünecek.', timer:2500, showConfirmButton:false, background:'#13131f', color:'#d8d8e8' });
+
+            },
+
+            error: function(){
+
+              Swal.fire({ icon:'error', title:'Hata!', text:'Yorum gönderilemedi, tekrar dene.', timer:2500, showConfirmButton:false, background:'#13131f', color:'#d8d8e8' });
+
+            }
+
+          });
+
+          return false;
+
+        });
+
+      });
+
+      
+
+
+
+        jQuery(document).ready(function(){
+
+          $('#zf-4526').submit(function(){
+
+            var inp  = $(this).find('input[type=text]');
+
+            var text = inp.val().trim();
+
+            if (!text) return false;
+
+            var btn = $(this).find('button[type=submit]');
+
+            btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i>');
+
+            $.ajax({
+
+              type: 'POST',
+
+              url:  'https://belgeselx.com/mofy/php/yorumcevapla40.php'
+
+                    + '?belgeselid=16336'
+
+                                        + '&diziid=982'
+
+                    + '&belgeselhakkinda=60659'
+
+                    + '&yorumid=4526',
+
+              data: { texta: text },
+
+              complete: function(){
+
+                btn.prop('disabled', false).html('<i class="fa fa-paper-plane"></i> Gönder');
+
+              },
+
+              success: function(resp){
+
+                var r = {};
+
+                try { r = JSON.parse(resp); } catch(e) { r = {ok:true}; }
+
+                if (r.ok === false) {
+
+                  Swal.fire({ icon:'error', title:'Hata!', text: r.msg || 'Cevap gönderilemedi.', timer:2500, showConfirmButton:false, background:'#13131f', color:'#d8d8e8' });
+
+                  return;
+
+                }
+
+                var safeText = $('<div>').text(text).html();
+
+                                var avatar = 'https://belgeselx.com/img/photo.jpg';
+
+                var isim   = 'Ziyaretçi';
+
+                var profil = '#';
+
+                                var replyHtml = '<div class="px-reply" style="animation:fadeIn .4s ease">'
+
+                  + '<div class="px-c-head">'
+
+                  +   '<img class="px-c-av" src="'+avatar+'" alt="'+isim+'">'
+
+                  +   '<div class="px-c-meta">'
+
+                  +     '<a href="'+profil+'" class="px-c-name">'+isim+'</a>'
+
+                  +     '<span class="px-c-time">az önce</span>'
+
+                  +   '</div>'
+
+                  + '</div>'
+
+                  + '<div class="px-c-text">'+safeText+'</div>'
+
+                  + '</div>';
+
+                var repliesBox = $('#comment4526').find('.px-replies');
+
+                if (repliesBox.length === 0) {
+
+                  $('#comment4526').append('<div class="px-replies">'+replyHtml+'</div>');
+
+                } else {
+
+                  repliesBox.append(replyHtml);
+
+                }
+
+                inp.val('');
+
+                $('#rf-4526').removeClass('is-open');
+
+                                Swal.fire({ icon:'success', title:'Cevabın alındı!', text:'Onaylandıktan sonra görünecek.', timer:2500, showConfirmButton:false, background:'#13131f', color:'#d8d8e8' });
+
+                              },
+
+              error: function(){
+
+                Swal.fire({ icon:'error', title:'Hata!', text:'Cevap gönderilemedi, tekrar dene.', timer:2500, showConfirmButton:false, background:'#13131f', color:'#d8d8e8' });
+
+              }
+
+            });
+
+            return false;
+
+          });
+
+        });
+
+        
+
+
+
+        jQuery(document).ready(function(){
+
+          $('#zf-2812').submit(function(){
+
+            var inp  = $(this).find('input[type=text]');
+
+            var text = inp.val().trim();
+
+            if (!text) return false;
+
+            var btn = $(this).find('button[type=submit]');
+
+            btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i>');
+
+            $.ajax({
+
+              type: 'POST',
+
+              url:  'https://belgeselx.com/mofy/php/yorumcevapla40.php'
+
+                    + '?belgeselid=16338'
+
+                                        + '&diziid=982'
+
+                    + '&belgeselhakkinda=60106'
+
+                    + '&yorumid=2812',
+
+              data: { texta: text },
+
+              complete: function(){
+
+                btn.prop('disabled', false).html('<i class="fa fa-paper-plane"></i> Gönder');
+
+              },
+
+              success: function(resp){
+
+                var r = {};
+
+                try { r = JSON.parse(resp); } catch(e) { r = {ok:true}; }
+
+                if (r.ok === false) {
+
+                  Swal.fire({ icon:'error', title:'Hata!', text: r.msg || 'Cevap gönderilemedi.', timer:2500, showConfirmButton:false, background:'#13131f', color:'#d8d8e8' });
+
+                  return;
+
+                }
+
+                var safeText = $('<div>').text(text).html();
+
+                                var avatar = 'https://belgeselx.com/img/photo.jpg';
+
+                var isim   = 'Ziyaretçi';
+
+                var profil = '#';
+
+                                var replyHtml = '<div class="px-reply" style="animation:fadeIn .4s ease">'
+
+                  + '<div class="px-c-head">'
+
+                  +   '<img class="px-c-av" src="'+avatar+'" alt="'+isim+'">'
+
+                  +   '<div class="px-c-meta">'
+
+                  +     '<a href="'+profil+'" class="px-c-name">'+isim+'</a>'
+
+                  +     '<span class="px-c-time">az önce</span>'
+
+                  +   '</div>'
+
+                  + '</div>'
+
+                  + '<div class="px-c-text">'+safeText+'</div>'
+
+                  + '</div>';
+
+                var repliesBox = $('#comment2812').find('.px-replies');
+
+                if (repliesBox.length === 0) {
+
+                  $('#comment2812').append('<div class="px-replies">'+replyHtml+'</div>');
+
+                } else {
+
+                  repliesBox.append(replyHtml);
+
+                }
+
+                inp.val('');
+
+                $('#rf-2812').removeClass('is-open');
+
+                                Swal.fire({ icon:'success', title:'Cevabın alındı!', text:'Onaylandıktan sonra görünecek.', timer:2500, showConfirmButton:false, background:'#13131f', color:'#d8d8e8' });
+
+                              },
+
+              error: function(){
+
+                Swal.fire({ icon:'error', title:'Hata!', text:'Cevap gönderilemedi, tekrar dene.', timer:2500, showConfirmButton:false, background:'#13131f', color:'#d8d8e8' });
+
+              }
+
+            });
+
+            return false;
+
+          });
+
+        });
+
+        
+
+
+
+/* ══════════════════════════════════════════════════════
+
+   BelgeselX — Ana JavaScript
+
+══════════════════════════════════════════════════════ */
+
+
+
+// ── Global state ────────────────────────────────────
+
+window.sonSecilen = 0;
+
+var srcMap = { '0':'new5','2':'new1','5':'new4','3':'new2','4':'new3' };
+
+
+
+function getSrc(ic, id, sira) {
+
+  var f = srcMap[String(ic)] || 'default';
+
+  return 'https://belgeselx.com/video/data/' + f + '.php?id=' + id + '&sira=' + sira;
+
+}
+
+
+
+// ── Video oynatma ────────────────────────────────────
+
+var pxVideoOynuyor = false; // hangi slot oynuyor (false veya 1/2/3)
+
+function playVideo(n) {
+
+  // Tüm iframeleri ve butonları önce temizle
+
+  for (var i = 1; i <= 3; i++) {
+
+    var fi = document.getElementById('vF' + i);
+
+    var bi = document.getElementById('F' + i);
+
+    if (i !== n) { fi.src = ''; fi.style.display = 'none'; bi.style.display = 'none'; }
+
+  }
+
+  var iframe = document.getElementById('vF' + n);
+
+  var btn    = document.getElementById('F' + n);
+
+  iframe.src = iframe.dataset.src || '';
+
+  iframe.style.display = 'block';
+
+  btn.style.display    = 'none';
+
+  pxVideoOynuyor = n;
+
+  var ratio = document.querySelector('.px-player-ratio');
+
+  if (ratio) { ratio.classList.add('playing'); }
+
+}
+
+
+
+// ── Kaynak sekmesi ───────────────────────────────────
+
+function switchSource(n) {
+
+  for (var i = 1; i <= 3; i++) {
+
+    var f = document.getElementById('vF' + i);
+
+    var b = document.getElementById('F'  + i);
+
+    var t = document.getElementById('stab-' + i);
+
+    var savedSrc = f.dataset.src; // dataset.src'yi koru
+
+    f.style.display = 'none';
+
+    f.src = '';
+
+    f.dataset.src = savedSrc;    // silme — koru
+
+    b.style.display = (i === n) ? 'flex' : 'none';
+
+    t.classList.toggle('active', i === n);
+
+  }
+
+}
+
+
+
+// ── PHP'den gelen izlendi haritası ──────────────────
+
+var pxIzlendiMap = {"16336":0,"16337":0,"16338":0,"16339":0,"16340":0,"16341":0,"16342":0,"16343":0,"16344":0,"16345":0};
+
+
+
+// ── Action bar state (global) ────────────────────────
+
+var pxState = {
+
+  bolumId:  16336,
+
+  diziId:   982,
+
+  uyeId:    0,
+
+  uyeKul:   '',
+
+  izlendi:  false,
+
+  liste:    false,
+
+  puan:     false,
+
+  secilenPuan: 0
+
+};
+
+
+
+// Buton görünümünü güncelle
+
+function pxUpdateButtons() {
+
+  var $iz  = $('#btn-izlendi');
+
+  var $ls  = $('#btn-liste');
+
+  var $pn  = $('#btn-puan');
+
+
+
+  // İzlendi
+
+  if (pxState.izlendi) {
+
+    $iz.addClass('px-act-green').html('<i class="fa fa-eye"></i> <span>İzlendi</span>');
+
+  } else {
+
+    $iz.removeClass('px-act-green').html('<i class="fa fa-eye-slash"></i> <span>İzledim İşaretle</span>');
+
+  }
+
+  // Listene Ekle
+
+  if (pxState.liste) {
+
+    $ls.addClass('px-act-green').html('<i class="fa fa-check"></i> <span>Listene Eklendi</span>');
+
+  } else {
+
+    $ls.removeClass('px-act-green').html('<i class="fa fa-plus"></i> <span>Listene Ekle</span>');
+
+  }
+
+  // Puan
+
+  if (pxState.puan) {
+
+    $pn.addClass('px-act-done').html('<i class="fa fa-star"></i> Puanlandı');
+
+  } else {
+
+    $pn.removeClass('px-act-done').html('<i class="fa fa-star"></i> Puan Ver');
+
+  }
+
+}
+
+
+
+// ── İzlendi toggle ───────────────────────────────────
+
+function pxIzlendiToggle() {
+
+  var phpUrl = pxState.izlendi
+
+    ? 'https://belgeselx.com/mofy/php/izledimsil.php'
+
+    : 'https://belgeselx.com/mofy/php/izledim.php';
+
+  $.get(phpUrl, {
+
+    kullaniciid:    pxState.uyeId,
+
+    belgeselid:     pxState.bolumId,
+
+    belgeseldiziid: pxState.diziId
+
+  }, function() {
+
+    pxState.izlendi = !pxState.izlendi;
+
+    pxIzlendiMap[pxState.bolumId] = pxState.izlendi ? 1 : 0;
+
+    // Karttaki izlendi dot'ını güncelle
+
+    var row = document.getElementById('no' + pxState.bolumId);
+
+    if (row) {
+
+      var right = row.querySelector('.px-ep-right');
+
+      var dot   = row.querySelector('.px-ep-watched-dot');
+
+      if (pxState.izlendi && !dot && right) {
+
+        var d = document.createElement('span');
+
+        d.className = 'px-ep-watched-dot';
+
+        right.insertBefore(d, right.firstChild);
+
+      } else if (!pxState.izlendi && dot) { dot.remove(); }
+
+    }
+
+    pxUpdateButtons();
+
+    pxNotif(pxState.izlendi ? 'ok' : 'err', pxState.izlendi ? 'İzlendi olarak işaretlendi.' : 'İzlendi işareti kaldırıldı.');
+
+  }).fail(function() {
+
+    pxNotif('err', 'İşlem başarısız, tekrar deneyin.');
+
+  });
+
+}
+
+
+
+// ── Liste toggle ─────────────────────────────────────
+
+function pxListeToggle() {
+
+  var phpUrl = pxState.liste
+
+    ? 'https://belgeselx.com/mofy/php/listesil.php'
+
+    : 'https://belgeselx.com/mofy/php/listeekle.php';
+
+  $.get(phpUrl, {
+
+    verenid:          pxState.uyeId,
+
+    belgeseldiziler:  'gizemli-tarih',
+
+    belgeseldizilerid: pxState.diziId
+
+  }, function() {
+
+    pxState.liste = !pxState.liste;
+
+    pxUpdateButtons();
+
+    pxNotif(pxState.liste ? 'ok' : 'err', pxState.liste ? 'Listenize eklendi.' : 'Listeden kaldırıldı.');
+
+  }).fail(function() {
+
+    pxNotif('err', 'İşlem başarısız, tekrar deneyin.');
+
+  });
+
+}
+
+
+
+// ── Puan modal ───────────────────────────────────────
+
+function pxPuanAc() {
+
+  if (pxState.puan) { pxNotif('err','Bu belgesele zaten puan verdiniz.'); return; }
+
+  document.getElementById('px-puan-modal').style.display = 'flex';
+
+  pxState.secilenPuan = 0;
+
+  document.getElementById('btn-puan-gonder').disabled = true;
+
+  document.querySelectorAll('.px-star-btn').forEach(function(b){ b.classList.remove('selected'); });
+
+}
+
+function pxPuanKapat() {
+
+  document.getElementById('px-puan-modal').style.display = 'none';
+
+}
+
+function pxStarSec(val) {
+
+  pxState.secilenPuan = val;
+
+  document.querySelectorAll('.px-star-btn').forEach(function(b){
+
+    b.classList.toggle('selected', parseInt(b.dataset.val) <= val);
+
+  });
+
+  document.getElementById('btn-puan-gonder').disabled = false;
+
+}
+
+function pxPuanGonder() {
+
+  if (!pxState.secilenPuan) return;
+
+  if (!pxState.diziId || !pxState.uyeId) {
+
+    pxNotif('err', 'Puan vermek için giriş yapın.');
+
+    pxPuanKapat();
+
+    return;
+
+  }
+
+  $.get('https://belgeselx.com/mofy/php/puanladizi.php', {
+
+    verenkullanici_adi: pxState.uyeKul,
+
+    belgeseldiziler:    'gizemli-tarih',
+
+    belgeseldizilerid:  pxState.diziId,
+
+    iceriks:            pxState.secilenPuan,
+
+    gonderst:           1
+
+  }, function() {
+
+    pxState.puan = true;
+
+    pxPuanKapat();
+
+    pxUpdateButtons();
+
+    pxNotif('ok', pxState.secilenPuan + '/5 puanınız kaydedildi!');
+
+  }).fail(function() {
+
+    pxNotif('err', 'Puan gönderilemedi, tekrar deneyin.');
+
+    pxPuanKapat();
+
+  });
+
+}
+
+
+
+// ── Bildirim helper ──────────────────────────────────
+
+function pxNotif(type, msg) {
+
+  var el = document.getElementById(type === 'ok' ? 'px-notif-ok' : 'px-notif-err');
+
+  if (msg) el.textContent = msg;
+
+  el.classList.add('show');
+
+  setTimeout(function(){ el.classList.remove('show'); }, 3000);
+
+}
+
+
+
+// ── Ana bölüm yükleme fonksiyonu ─────────────────────
+
+function diziGetir(id, ic1, ic2, ic3, baslik, hit, tarih, sezon, bolum, diziid, sefurl, uyeid, uyekul, giris, sira) {
+
+
+
+  // iframe src'leri güncelle, sıfırla — ÖNCE her şeyi kapat
+
+  pxVideoOynuyor = false;
+
+  for (var ii = 1; ii <= 3; ii++) {
+
+    var vEl = document.getElementById('vF' + ii);
+
+    var bEl = document.getElementById('F' + ii);
+
+    vEl.src = '';
+
+    vEl.style.display = 'none';
+
+    vEl.dataset.src = getSrc([ic1,ic2,ic3][ii-1], id, ii);
+
+    bEl.style.display = 'none';
+
+  }
+
+  // Sadece F1'i göster
+
+  document.getElementById('F1').style.display = 'flex';
+
+  // Tab'ı sıfırla
+
+  for (var i = 1; i <= 3; i++) document.getElementById('stab-'+i).classList.remove('active');
+
+  document.getElementById('stab-1').classList.add('active');
+
+
+
+  // Ambient Mode'u sıfırla (yeni bölüm afişi için)
+
+  var ratio = document.querySelector('.px-player-ratio');
+
+  if (ratio) { ratio.classList.remove('playing'); }
+
+
+
+  // Bilgileri güncelle
+
+  document.getElementById('px-baslik').innerText = baslik;
+
+  document.getElementById('px-hit').innerText    = hit;
+
+  document.getElementById('px-tarih').innerText  = tarih;
+
+  document.getElementById('px-sezon').innerText  = sezon;
+
+  document.getElementById('px-bolum').innerText  = bolum;
+
+  // Now playing bar başlık güncelle
+
+  var npTitle = document.getElementById('px-now-title');
+
+  if (npTitle) npTitle.innerText = 'GİZEMLİ TARİH — ' + baslik;
+
+
+
+  // Aktif satır güncelle — DOM'daki TÜM active'leri temizle (sonSecilen'e güvenme)
+
+  document.querySelectorAll('.px-ep-row.active').forEach(function(r){ r.classList.remove('active'); });
+
+  var cur = document.getElementById('no' + id);
+
+  if (cur) {
+
+    cur.classList.add('active');
+
+    // Bölümün sezonunu aktif sekmeye al
+
+    var pane = cur.closest('.px-season-pane');
+
+    if (pane) {
+
+      var sNo = pane.id.replace('sp-','');
+
+      pxSezonSec(parseInt(sNo));
+
+    }
+
+    // Scroll: sezon pane aktif olduktan sonra çalıştır
+
+    setTimeout(function() {
+
+      var scroll = document.getElementById('px-ep-scroll');
+
+      var curEl  = document.getElementById('no' + id);
+
+      if (scroll && curEl) {
+
+        // Bölümün scroll container içindeki göreli konumu
+
+        var scrollRect  = scroll.getBoundingClientRect();
+
+        var curRect     = curEl.getBoundingClientRect();
+
+        var relTop      = curRect.top - scrollRect.top + scroll.scrollTop;
+
+        var center      = relTop - (scroll.clientHeight / 2) + (curEl.offsetHeight / 2);
+
+        scroll.scrollTo({ top: Math.max(0, center), behavior: 'smooth' });
+
+      }
+
+    }, 80);
+
+  }
+
+  window.sonSecilen = id;
+
+
+
+  // Action bar — bölüm değişince izlendi map'ten oku (sıfır AJAX)
+
+  
+
+  // sessionStorage'a kaydet
+
+  sessionStorage.setItem('butonId', id);
+
+}
+
+
+
+// ── Sezon ok navigasyonu ─────────────────────────────
+
+var pxSezonIndex = 0;
+
+var pxSezonList  = [1];
+
+
+
+function pxSezonOk(dir) {
+
+  pxSezonIndex = Math.max(0, Math.min(pxSezonList.length - 1, pxSezonIndex + dir));
+
+  pxSezonSec(pxSezonList[pxSezonIndex]);
+
+  pxSezonOkGuncelle();
+
+}
+
+function pxSezonOkGuncelle() {
+
+  var prev = document.getElementById('px-season-prev');
+
+  var next = document.getElementById('px-season-next');
+
+  if (prev) prev.disabled = (pxSezonIndex === 0);
+
+  if (next) next.disabled = (pxSezonIndex === pxSezonList.length - 1);
+
+}
+
+// İlk yüklemede ok durumunu ayarla
+
+document.addEventListener('DOMContentLoaded', function() { pxSezonOkGuncelle(); });
+
+
+
+// ── Sezon sekme değiştirici ──────────────────────────
+
+function pxSezonSec(sNo) {
+
+  // Tüm panelleri/sekmeleri gizle
+
+  document.querySelectorAll('.px-season-pane').forEach(function(p){ p.classList.remove('active'); });
+
+  document.querySelectorAll('.px-season-tab').forEach(function(t){ t.classList.remove('active'); });
+
+  // Seçileni aç
+
+  var pane = document.getElementById('sp-' + sNo);
+
+  var tab  = document.getElementById('stab-s' + sNo);
+
+  if (pane) pane.classList.add('active');
+
+  if (tab)  tab.classList.add('active');
+
+  // Scroll sıfırla
+
+  var scroll = document.getElementById('px-ep-scroll');
+
+  if (scroll) scroll.scrollTop = 0;
+
+  // Aktif sekmeyi görünür alana kaydır
+
+  if (tab) tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+  // Ok index güncelle
+
+  var idx = pxSezonList.indexOf(parseInt(sNo));
+
+  if (idx !== -1) { pxSezonIndex = idx; pxSezonOkGuncelle(); }
+
+}
+
+
+
+
+
+function toggleReply(id) {
+
+  var el = document.getElementById('rf-' + id);
+
+  el.classList.toggle('is-open');
+
+  if (el.classList.contains('is-open')) el.querySelector('input').focus();
+
+}
+
+
+
+// ── Sayfa yüklenince ilk bölümü otomatik aç ──────────
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Loader gizle
+
+  setTimeout(function() {
+
+    var l = document.getElementById('px-loader');
+
+    if (l) { l.style.opacity = '0'; setTimeout(function(){ l.style.display='none'; }, 500); }
+
+  }, 800);
+
+});
+
+
+
+window.addEventListener('load', function () {
+
+  // Bölüm seç: sessionStorage varsa onu, yoksa ilk bölüm
+
+  setTimeout(function() {
+
+    var stored = sessionStorage.getItem('butonId');
+
+    var firstId = '16336';
+
+    var targetId = (stored && /^\d+$/.test(stored)) ? stored : firstId;
+
+    var el = document.getElementById('no' + targetId);
+
+    if (!el) el = document.getElementById('no' + firstId);
+
+    if (el) {
+
+      el.click();
+
+    }
+
+  }, 300);
+
+});
+
+
+
+// ── Header panelleri ─────────────────────────────────
+
+document.getElementById('px-s-toggle').addEventListener('click', function(e) {
+
+  e.stopPropagation();
+
+  var panel = document.getElementById('px-s-panel');
+
+  var wasOpen = panel.classList.contains('is-open');
+
+  panel.classList.toggle('is-open');
+
+  document.getElementById('px-u-panel').classList.remove('is-open');
+
+  // Panel açılınca input'a odaklan
+
+  if (!wasOpen) {
+
+    setTimeout(function() {
+
+      var inp = document.getElementById('px-search-input');
+
+      if (inp) inp.focus();
+
+    }, 150);
+
+  }
+
+});
+
+document.getElementById('px-u-toggle').addEventListener('click', function(e) {
+
+  e.stopPropagation();
+
+  document.getElementById('px-u-panel').classList.toggle('is-open');
+
+  document.getElementById('px-s-panel').classList.remove('is-open');
+
+});
+
+document.addEventListener('click', function(e) {
+
+  if (!e.target.closest('.px-search-wrap')) {
+
+    document.getElementById('px-s-panel').classList.remove('is-open');
+
+  }
+
+  if (!e.target.closest('.px-user-wrap')) {
+
+    document.getElementById('px-u-panel').classList.remove('is-open');
+
+  }
+
+});
+
+// Panel içine tıklanınca kapanmasın
+
+document.getElementById('px-s-panel').addEventListener('click', function(e) { e.stopPropagation(); });
+
+
+
+// ── Arama fonksiyonu ─────────────────────────────────
+
+var pxSearchTimer = null;
+
+var pxSearchLast  = '';
+
+
+
+document.getElementById('px-search-input').addEventListener('input', function() {
+
+  var q = this.value.trim();
+
+  var clearBtn = document.getElementById('px-search-clear');
+
+  clearBtn.classList.toggle('visible', q.length > 0);
+
+
+
+  if (q === pxSearchLast) return;
+
+  pxSearchLast = q;
+
+
+
+  clearTimeout(pxSearchTimer);
+
+
+
+  if (q.length < 2) {
+
+    document.getElementById('px-search-results').innerHTML =
+
+      '<div class="px-search-empty"><i class="fa fa-film"></i>Aramak istediğiniz belgeseli yazın</div>';
+
+    document.getElementById('px-search-loading').style.display = 'none';
+
+    return;
+
+  }
+
+
+
+  document.getElementById('px-search-loading').style.display = 'block';
+
+  document.getElementById('px-search-results').innerHTML = '';
+
+
+
+  pxSearchTimer = setTimeout(function() {
+
+    pxDoSearch(q);
+
+  }, 380);
+
+});
+
+
+
+document.getElementById('px-search-clear').addEventListener('click', function() {
+
+  var inp = document.getElementById('px-search-input');
+
+  inp.value = '';
+
+  inp.focus();
+
+  pxSearchLast = '';
+
+  this.classList.remove('visible');
+
+  document.getElementById('px-search-results').innerHTML =
+
+    '<div class="px-search-empty"><i class="fa fa-film"></i>Aramak istediğiniz belgeseli yazın</div>';
+
+  document.getElementById('px-search-loading').style.display = 'none';
+
+});
+
+
+
+function pxDoSearch(q) {
+
+  var res = document.getElementById('px-search-results');
+
+
+
+  // Google CSE'yi programatik tetikle
+
+  if (window.google && window.google.search && window.google.search.cse) {
+
+    try {
+
+      window.google.search.cse.element.getElement('searchresults-only0').execute(q);
+
+    } catch(e) {}
+
+  }
+
+
+
+  // CSE sonuçlarını DOM'dan okuyup kendi panelimize aktar
+
+  var attempt = 0;
+
+  var maxAttempts = 20; // 4 saniye bekle
+
+
+
+  function readResults() {
+
+    attempt++;
+
+    var gcseEl = document.getElementById('px-gcse-hidden');
+
+    if (!gcseEl) return;
+
+
+
+    // GSC sonuç linkleri
+
+    var links   = gcseEl.querySelectorAll('.gsc-result .gs-title a.gs-title');
+
+    var snippets = gcseEl.querySelectorAll('.gsc-result .gs-snippet');
+
+    var thumbs  = gcseEl.querySelectorAll('.gsc-result .gs-image-box img');
+
+
+
+    if (links.length === 0 && attempt < maxAttempts) {
+
+      setTimeout(readResults, 200);
+
+      return;
+
+    }
+
+
+
+    document.getElementById('px-search-loading').style.display = 'none';
+
+
+
+    if (links.length === 0) {
+
+      res.innerHTML = '<div class="px-search-empty"><i class="fa fa-circle-xmark"></i>"' + pxEscape(q) + '" için sonuç bulunamadı</div>';
+
+      return;
+
+    }
+
+
+
+    var html = '';
+
+    links.forEach(function(link, i) {
+
+      var title   = link.textContent.trim().replace(' — belgeselx.com','').replace(' - belgeselx.com','');
+
+      var href    = link.href || '#';
+
+      var snippet = snippets[i] ? snippets[i].textContent.trim().substring(0, 90) + '…' : '';
+
+      var imgSrc  = thumbs[i] ? thumbs[i].src : '';
+
+
+
+      html += '<a class="px-search-item" href="' + pxEscape(href) + '">'
+
+            + (imgSrc
+
+                ? '<img class="px-search-item-img" src="' + pxEscape(imgSrc) + '" alt="" onerror="this.style.display=\'none\'">'
+
+                : '<div class="px-search-item-img px-search-item-img-empty"><i class="fa fa-film"></i></div>')
+
+            + '<div class="px-search-item-body">'
+
+            +   '<div class="px-search-item-title">' + pxEscape(title) + '</div>'
+
+            +   '<div class="px-search-item-meta">' + pxEscape(snippet) + '</div>'
+
+            + '</div>'
+
+            + '<i class="fa fa-arrow-up-right-from-square px-search-item-arrow"></i>'
+
+            + '</a>';
+
+    });
+
+
+
+    html += '<div class="px-search-footer">'
+
+          + '<a href="https://www.google.com/search?q=' + encodeURIComponent(q + ' site:belgeselx.com') + '" target="_blank" style="color:var(--c-red);">'
+
+          + '<i class="fa fa-magnifying-glass"></i> Tüm sonuçları gör</a></div>';
+
+
+
+    res.innerHTML = html;
+
+  }
+
+
+
+  setTimeout(readResults, 300);
+
+}
+
+
+
+function pxEscape(s) {
+
+  if (!s) return '';
+
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+}
+
+
+
+// Enter tuşuyla arama sayfasına git
+
+document.getElementById('px-search-input').addEventListener('keydown', function(e) {
+
+  if (e.key === 'Enter' && this.value.trim().length > 0) {
+
+    window.location.href = 'https://belgeselx.com/arama?q=' + encodeURIComponent(this.value.trim());
+
+  }
+
+});
+
+
+
+// ── Hamburger ────────────────────────────────────────
+
+document.getElementById('px-hamburger').addEventListener('click', function() {
+
+  document.getElementById('px-mobile-nav').classList.toggle('is-open');
+
+});
+
+
+
+
+(function(){
+  function pxSendAdBlock(hasAdblock) {
+    var fd = new FormData();
+    fd.append('action', hasAdblock ? 'adblock_var' : 'adblock_yok');
+    fetch('/advertisement.php', {
+      method: 'POST',
+      body: fd,
+      headers: {'X-Requested-With': 'XMLHttpRequest'},
+      keepalive: true
+    }).catch(function(){});
+  }
+  function pxSendHeartbeat() {
+    var fd = new FormData();
+    fd.append('action', 'heartbeat');
+    fetch('/advertisement.php', {
+      method: 'POST',
+      body: fd,
+      headers: {'X-Requested-With': 'XMLHttpRequest'},
+      keepalive: true
+    }).catch(function(){});
+  }
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      // Adblock tespiti
+      var bait = document.getElementById('px-ab-bait');
+      var baitBlocked = !bait || bait.offsetHeight === 0 || bait.offsetParent === null ||
+                        getComputedStyle(bait).display === 'none' ||
+                        getComputedStyle(bait).visibility === 'hidden';
+      if (baitBlocked) {
+        pxSendAdBlock(true);
+      } else {
+        fetch('/advertisement.php', {
+          method: 'GET',
+          headers: {'X-Requested-With': 'XMLHttpRequest'},
+          cache: 'no-store'
+        }).then(function(r){
+          pxSendAdBlock(!r.ok);
+        }).catch(function(){
+          pxSendAdBlock(true);
+        });
+      }
+      
+      // Kullanici sayfada kaldigi surece her 2 dakikada bir (120000ms) heartbeat gonder
+      setInterval(pxSendHeartbeat, 120000);
+    }, 1500);
+  });
+})();
+
+

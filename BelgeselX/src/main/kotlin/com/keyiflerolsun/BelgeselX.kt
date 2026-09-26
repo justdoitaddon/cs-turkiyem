@@ -1,4 +1,4 @@
-// ! Bu araç @keyiflerolsun tarafından | @KekikAkademi için yazılmıştır.
+﻿// ! Bu araÃ§ @keyiflerolsun tarafÄ±ndan | @KekikAkademi iÃ§in yazÄ±lmÄ±ÅŸtÄ±r.
 
 package com.keyiflerolsun
 
@@ -17,24 +17,24 @@ class BelgeselX : MainAPI() {
     override val supportedTypes       = setOf(TvType.Documentary)
 	
     override val mainPage = mainPageOf(
-        "${mainUrl}/konu/turk-tarihi-belgeselleri&page=" to "Türk Tarihi",
+        "${mainUrl}/konu/turk-tarihi-belgeselleri&page=" to "TÃ¼rk Tarihi",
         "${mainUrl}/konu/tarih-belgeselleri&page="		 to "Tarih",
         "${mainUrl}/konu/seyehat-belgeselleri&page="	 to "Seyahat",
         "${mainUrl}/konu/seri-belgeseller&page="		 to "Seri",
-        "${mainUrl}/konu/savas-belgeselleri&page="		 to "Savaş",
+        "${mainUrl}/konu/savas-belgeselleri&page="		 to "SavaÅŸ",
         "${mainUrl}/konu/sanat-belgeselleri&page="		 to "Sanat",
         "${mainUrl}/konu/psikoloji-belgeselleri&page="	 to "Psikoloji",
         "${mainUrl}/konu/polisiye-belgeselleri&page="	 to "Polisiye",
         "${mainUrl}/konu/otomobil-belgeselleri&page="	 to "Otomobil",
         "${mainUrl}/konu/nazi-belgeselleri&page="		 to "Nazi",
-        "${mainUrl}/konu/muhendislik-belgeselleri&page=" to "Mühendislik",
-        "${mainUrl}/konu/kultur-din-belgeselleri&page="	 to "Kültür Din",
+        "${mainUrl}/konu/muhendislik-belgeselleri&page=" to "MÃ¼hendislik",
+        "${mainUrl}/konu/kultur-din-belgeselleri&page="	 to "KÃ¼ltÃ¼r Din",
         "${mainUrl}/konu/kozmik-belgeseller&page="		 to "Kozmik",
         "${mainUrl}/konu/hayvan-belgeselleri&page="		 to "Hayvan",
         "${mainUrl}/konu/eski-tarih-belgeselleri&page="	 to "Eski Tarih",
-        "${mainUrl}/konu/egitim-belgeselleri&page="		 to "Eğitim",
-        "${mainUrl}/konu/dunya-belgeselleri&page="		 to "Dünya",
-        "${mainUrl}/konu/doga-belgeselleri&page="		 to "Doğa",
+        "${mainUrl}/konu/egitim-belgeselleri&page="		 to "EÄŸitim",
+        "${mainUrl}/konu/dunya-belgeselleri&page="		 to "DÃ¼nya",
+        "${mainUrl}/konu/doga-belgeselleri&page="		 to "DoÄŸa",
         "${mainUrl}/konu/bilim-belgeselleri&page="		 to "Bilim"
     )
 
@@ -68,7 +68,7 @@ class BelgeselX : MainAPI() {
         val cseToken      = Regex("""cse_token": "(.*)"""").find(tokenResponse.text)?.groupValues?.get(1)
 
         val response = app.get("https://cse.google.com/cse/element/v1?rsz=filtered_cse&num=100&hl=tr&source=gcsc&cselibv=${cseLibVersion}&cx=${cx}&q=${query}&safe=off&cse_tok=${cseToken}&sort=&exp=cc%2Capo&oq=${query}&callback=google.search.cse.api9969&rurl=https%3A%2F%2Fbelgeselx.com%2F", referer = "https://belgeselx.com/")
-        Log.d("BLX", "response » $response")
+        Log.d("BLX", "response Â» $response")
         val titles     = Regex(""""titleNoFormatting": "(.*)"""").findAll(response.text).map { it.groupValues[1] }.toList()
         val urls       = Regex(""""ogImage": "(.*)"""").findAll(response.text).map { it.groupValues[1] }.toList()
         val posterUrls = Regex(""""ogImage": "(.*)"""").findAll(response.text).map { it.groupValues[1] }.toList()
@@ -76,14 +76,14 @@ class BelgeselX : MainAPI() {
         val searchResponses = mutableListOf<TvSeriesSearchResponse>()
 
         for (i in titles.indices) {
-            val title     = titles[i].split("İzle")[0].trim().toTitleCase()
+            val title     = titles[i].split("Ä°zle")[0].trim().toTitleCase()
             val url       = urls.getOrNull(i) ?: continue
             val posterUrl = posterUrls.getOrNull(i) ?: continue
 
         if (url.contains("diziresimleri")) {
-            // URL'den dosya adını al ve .jpg uzantısını kaldır
+            // URL'den dosya adÄ±nÄ± al ve .jpg uzantÄ±sÄ±nÄ± kaldÄ±r
             val fileName = url.substringAfterLast("/").replace(Regex("\\.(jpe?g|png|webp)$"), "")
-            // Yeni URL'yi oluştur
+            // Yeni URL'yi oluÅŸtur
             val modifiedUrl = "https://belgeselx.com/belgeseldizi/$fileName"
             searchResponses.add(newTvSeriesSearchResponse(title, modifiedUrl, TvType.Documentary) {
                 this.posterUrl = posterUrl
@@ -144,33 +144,47 @@ class BelgeselX : MainAPI() {
             val f = srcMap[ic] ?: "default"
             val sira = index + 1
             val iframeUrl = "https://belgeselx.com/video/data/$f.php?id=$id&sira=$sira"
-            Log.d("BLX", "iframeUrl oluşturuldu » $iframeUrl")
+            Log.d("BLX", "iframeUrl oluÅŸturuldu Â» $iframeUrl")
 
             val alternatifResp = app.get(iframeUrl, referer = referer)
+            val html = alternatifResp.text
 
-            Regex("""file:\s*"([^"]+)",\s*label:\s*"([^"]+)"""").findAll(alternatifResp.text).forEach {
-                var thisName = this.name
-                val videoUrl = it.groupValues[1]
-                var quality = it.groupValues[2]
+            val fileMatches = Regex("""file:\s*"([^"]+)",\s*label:\s*"([^"]+)"""").findAll(html).toList()
+            
+            if (fileMatches.isNotEmpty()) {
+                fileMatches.forEach {
+                    var thisName = this.name
+                    val videoUrl = it.groupValues[1]
+                    var quality = it.groupValues[2]
 
-                if (quality.contains("FULL", ignoreCase = true)) {
-                    quality = "1080p"
-                    thisName = "Google"
-                }
-                
-                callback.invoke(
-                    ExtractorLink(
-                        source = thisName,
-                        name = thisName,
-                        url = videoUrl,
-                        referer = referer,
-                        quality = getQualityFromName(quality.replace("p", "").toIntOrNull()?.toString() ?: quality),
-                        type = if (videoUrl.contains(".m3u8")) ExtractorLinkType.M3U8 else ExtractorLinkType.VIDEO
+                    if (quality.contains("FULL", ignoreCase = true)) {
+                        quality = "1080p"
+                        thisName = "Google"
+                    }
+                    
+                    callback.invoke(
+                        ExtractorLink(
+                            source = thisName,
+                            name = thisName,
+                            url = videoUrl,
+                            referer = referer,
+                            quality = getQualityFromName(quality.replace("p", "").toIntOrNull()?.toString() ?: quality),
+                            type = if (videoUrl.contains(".m3u8")) ExtractorLinkType.M3U8 else ExtractorLinkType.VIDEO
+                        )
                     )
-                )
+                }
+            } else {
+                val iframeMatch = Regex("""<iframe[^>]+src="([^"]+)"""").find(html)
+                if (iframeMatch != null) {
+                    var embedUrl = iframeMatch.groupValues[1]
+                    if (embedUrl.startsWith("//")) embedUrl = "https:" + embedUrl
+                    Log.d("BLX", "Iframe bulundu: " + embedUrl)
+                    loadExtractor(embedUrl, referer, subtitleCallback, callback)
+                }
             }
         }
 
         return true
     }
 }
+

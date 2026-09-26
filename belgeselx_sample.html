@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 â Sayfa BulunamadÄ± | Belgeselx</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="shortcut icon" href="https://belgeselx.com/img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#07070f;--surface:#0d0d1a;--card:#111120;--raised:#161628;
+  --border:#1a1a2e;--border2:#22223a;
+  --red:#e8291c;--red-dim:#c0200f;--red-glow:rgba(232,41,28,.15);
+  --txt:#c8c8de;--txt2:#6a6a90;--txt3:#38385a;--white:#fff;
+  --shadow:0 8px 32px rgba(0,0,0,.55);--shadow-lg:0 20px 60px rgba(0,0,0,.7);
+  --ease:cubic-bezier(.4,0,.2,1);--dur:.18s;
+  --font-d:'Syne',sans-serif;--font-b:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:15px;scroll-behavior:smooth;height:100%;}
+body{
+  background:var(--bg);color:var(--txt);font-family:var(--font-b);
+  line-height:1.65;-webkit-font-smoothing:antialiased;
+  min-height:100vh;display:flex;flex-direction:column;
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -8%,rgba(232,41,28,.08) 0%,transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 85%,rgba(20,20,55,.8) 0%,transparent 70%);
+  background-attachment:fixed;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  background-size:256px;mix-blend-mode:overlay;
+}
+a{color:inherit;text-decoration:none;transition:color var(--dur) var(--ease);}
+a:hover{color:var(--red);}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:#2a2a40;border-radius:99px;}
+
+/* HEADER */
+#px-header{position:sticky;top:0;z-index:900;background:rgba(7,7,15,.92);backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid var(--border);position:relative;z-index:1;}
+.px-header-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;padding:0 28px;height:64px;gap:10px;}
+.px-logo img{height:44px;transition:opacity var(--dur);}
+.px-logo:hover img{opacity:.7;}
+.px-header-right{display:flex;align-items:center;gap:8px;margin-left:auto;}
+.px-hdr-btn{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;border:none;background:var(--red);color:var(--white);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:all var(--dur);text-decoration:none;}
+.px-hdr-btn:hover{background:var(--red-dim);color:var(--white);}
+
+/* MAIN */
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 28px;position:relative;z-index:1;}
+
+/* 404 CONTENT */
+.px-error-wrap{text-align:center;max-width:620px;}
+
+.px-error-code{
+  font-family:var(--font-d);
+  font-size:clamp(120px,20vw,200px);
+  font-weight:800;
+  line-height:1;
+  color:transparent;
+  background:linear-gradient(135deg,var(--red) 0%,#ff6b35 50%,var(--red-dim) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  letter-spacing:-.04em;
+  position:relative;
+  display:inline-block;
+  animation:px-glow-pulse 3s ease-in-out infinite;
+}
+@keyframes px-glow-pulse{
+  0%,100%{filter:drop-shadow(0 0 40px rgba(232,41,28,.3));}
+  50%{filter:drop-shadow(0 0 70px rgba(232,41,28,.6));}
+}
+
+.px-error-film{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-bottom:20px;
+}
+.px-error-film-line{
+  width:60px;height:2px;background:var(--border2);
+  position:relative;overflow:hidden;
+}
+.px-error-film-line::after{
+  content:'';position:absolute;inset:0;
+  background:var(--red);
+  animation:px-scan 2.5s linear infinite;
+}
+@keyframes px-scan{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.px-error-film-icon{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--card);border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--txt3);font-size:20px;
+}
+
+.px-error-title{
+  font-family:var(--font-d);font-size:22px;font-weight:700;
+  color:var(--white);margin-bottom:12px;
+}
+.px-error-desc{
+  font-size:14px;color:var(--txt2);line-height:1.7;margin-bottom:36px;
+}
+
+.px-error-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.px-btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 24px;background:var(--red);border:none;
+  color:#fff;font-family:var(--font-d);font-size:13px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+  transition:all var(--dur);text-decoration:none;
+}
+.px-btn-primary:hover{background:var(--red-dim);color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,41,28,.35);}
+.px-btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 24px;background:none;border:1px solid var(--border2);
+  color:var(--txt2);font-family:var(--font-d);font-size:13px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+  transition:all var(--dur);text-decoration:none;
+}
+.px-btn-ghost:hover{color:var(--white);border-color:var(--red);background:var(--red-glow);}
+
+/* Ãnerilen linkler */
+.px-error-links{
+  display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:40px;
+  padding-top:32px;border-top:1px solid var(--border);
+}
+.px-error-link{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;background:var(--card);border:1px solid var(--border2);
+  color:var(--txt2);font-size:12px;transition:all var(--dur);
+}
+.px-error-link:hover{color:var(--white);border-color:var(--red);background:var(--raised);}
+.px-error-link i{color:var(--red);font-size:10px;}
+
+/* Film Åeridi dekor */
+.px-film-strip{
+  position:fixed;top:0;left:0;bottom:0;width:28px;
+  display:flex;flex-direction:column;gap:0;opacity:.04;pointer-events:none;z-index:0;
+}
+.px-film-strip-right{left:auto;right:0;}
+.px-film-hole{
+  width:100%;height:20px;background:var(--white);
+  margin:6px 4px;border-radius:2px;flex-shrink:0;
+}
+
+/* FOOTER */
+#px-footer{background:var(--surface);border-top:1px solid var(--border);position:relative;z-index:1;}
+.px-footer-bottom{padding:16px 28px;text-align:center;font-size:12px;color:var(--txt3);}
+.px-footer-bottom a{color:var(--txt2);}
+.px-footer-bottom a:hover{color:var(--red);}
+
+@media(max-width:600px){
+  .px-header-inner{padding:0 16px;}
+  main{padding:40px 16px;}
+  .px-error-actions{flex-direction:column;align-items:center;}
+  .px-film-strip{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- Film Åeridi dekor -->
+<div class="px-film-strip">
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+</div>
+<div class="px-film-strip px-film-strip-right">
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+  <div class="px-film-hole"></div><div class="px-film-hole"></div><div class="px-film-hole"></div>
+</div>
+
+<!-- HEADER -->
+<header id="px-header">
+  <div class="px-header-inner">
+    <a class="px-logo" href="https://belgeselx.com/">
+      <img src="https://belgeselx.com/images/logo5.png" alt="BelgeselX">
+    </a>
+    <div class="px-header-right">
+      <a class="px-hdr-btn" href="https://belgeselx.com/">
+        <i class="fa fa-house"></i> Anasayfa
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<main>
+  <div class="px-error-wrap">
+
+    <div class="px-error-film">
+      <div class="px-error-film-line"></div>
+      <div class="px-error-film-icon"><i class="fa fa-film"></i></div>
+      <div class="px-error-film-line"></div>
+    </div>
+
+    <div class="px-error-code">404</div>
+
+    <div class="px-error-title">Bu Sahne BulunamadÄ±</div>
+    <p class="px-error-desc">
+      AradÄ±ÄÄ±nÄ±z sayfa silinmiÅ, taÅÄ±nmÄ±Å ya da hiÃ§ var olmamÄ±Å olabilir.<br>
+      Ama merak etmeyin â izlenecek binlerce belgesel sizi bekliyor.
+    </p>
+
+    <div class="px-error-actions">
+      <a class="px-btn-primary" href="https://belgeselx.com/">
+        <i class="fa fa-house"></i> Anasayfaya DÃ¶n
+      </a>
+      <a class="px-btn-ghost" href="javascript:history.back()">
+        <i class="fa fa-arrow-left"></i> Geri Git
+      </a>
+    </div>
+
+    <div class="px-error-links">
+      <a class="px-error-link" href="https://belgeselx.com/son-eklenenler">
+        <i class="fa fa-clock"></i> Son Eklenenler
+      </a>
+      <a class="px-error-link" href="https://belgeselx.com/en-cok-izlenen-belgeseller">
+        <i class="fa fa-fire"></i> En Ãok Ä°zlenenler
+      </a>
+      <a class="px-error-link" href="https://belgeselx.com/haftanin-trendleri">
+        <i class="fa fa-chart-line"></i> Trendler
+      </a>
+      <a class="px-error-link" href="https://belgeselx.com/uye-girisi">
+        <i class="fa fa-user"></i> GiriÅ Yap
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer id="px-footer">
+  <div class="px-footer-bottom">
+    &copy; 2024 <a href="https://belgeselx.com">Belgeselx.com</a> â TÃ¼m haklarÄ± saklÄ±dÄ±r.
+    &nbsp;&middot;&nbsp; <a href="https://belgeselx.com/gizlilik">Gizlilik</a>
+  </div>
+</footer>
+
+</body>
+</html>
